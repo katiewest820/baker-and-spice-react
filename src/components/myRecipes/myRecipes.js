@@ -12,6 +12,11 @@ export default class MyRecipes extends React.Component{
           <li>salad</li>
           <li>ice cream</li>
         </ul>
+        <div className="searchMyRecipes">
+          <label>Search My Recipes</label>
+          <input type="text"/>
+          <button>Search</button>
+        </div>
       </div>
     )
   }

@@ -1,0 +1,46 @@
+import React from 'react';
+//import {connect} from 'react-redux';
+import LandingPageHeader from '../landingPageHeader/landingPageHeader';
+import Register from '../register/register';
+import './landingPage.css';
+export default class LandingPage extends React.Component{
+
+  render(){
+    return(
+      <section className="landingPage">
+        <LandingPageHeader />
+        <div className="welcomeDiv">
+          <h1>Welcome to Baker and Spice</h1>
+          <p>Description Description Description Description Description Description 
+          Description Description Description Description Description Description 
+          Description Description Description Description Description Description 
+          Description Description Description Description Description Description 
+          </p>
+        </div>
+        <div className="aboutDiv">
+          <h1>What is Baker and Spice</h1>
+          <div className="aboutBlocks">
+            <div>
+              <h2>Create Recipes</h2>
+              <span></span>
+            </div>
+            <div>
+              <h2>Organize and Share</h2>
+              <span></span>
+            </div>
+            <div>
+              <h2>Get Inspiration</h2>
+              <span></span>
+            </div>
+          </div>
+        </div> 
+        <div className="registerDiv">
+          <h1>Register</h1>
+          <Register />
+        </div> 
+      </section>
+    )
+  }
+}
+
+//export default connect()(LandingPage)

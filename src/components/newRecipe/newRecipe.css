@@ -1,0 +1,34 @@
+.newRecipeDiv{
+  background-color: grey;
+  padding: 30px;
+  text-align: center;
+}
+
+.newRecipeDiv div{
+  display: grid;
+  grid-gap: 10px;
+}
+
+.newRecipeDiv label{
+  font-size: 18px;
+  text-decoration: underline;
+  justify-self: start;
+}
+
+.newRecipeDiv button{
+  width: 60px;
+  margin: auto;
+}
+
+.imgInputDiv{
+  grid-template-columns: 1fr 3fr;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+@media (min-width: 640px){
+  .newRecipeDiv div{
+    width: 50%;
+    margin: auto;
+  }
+}

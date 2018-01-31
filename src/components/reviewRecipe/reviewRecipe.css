@@ -1,0 +1,22 @@
+.reviewRecipeDiv{
+  background-color: lightgrey;
+  padding: 30px;
+  text-align: center;
+}
+
+.reviewAllDetails{
+  border: solid 3px black;
+}
+
+.reviewAllDetails ul, .reviewAllDetails li{
+  width: fit-content;
+  margin: auto;
+}
+
+@media (min-width: 640px){
+
+  .reviewAllDetails{
+    width: 50%;
+    margin:auto;
+  }
+}

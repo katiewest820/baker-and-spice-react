@@ -1,0 +1,60 @@
+.landingPage h1{
+  font-size: 35px;
+}
+
+.welcomeDiv{
+  background-color: grey;
+  text-align: center;
+  padding: 30px;
+}
+
+.welcomeDiv p{
+  width: 80%;
+  margin: auto;
+}
+
+.aboutDiv{
+  background-color: lightgrey;
+  text-align: center;
+  padding: 30px;
+}
+
+.aboutBlocks{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  padding: 30px;
+  margin: auto;
+}
+
+.aboutBlocks div{
+  height: 200px;
+  display: grid;
+  border: solid 3px black;
+}
+
+.aboutBlocks h2{
+  align-self: end;
+  text-align: center;
+}
+
+.aboutBlocks span{
+  width: 25%;
+  border-top: 2px solid black;
+  align-self: start;
+  justify-self: center;
+}
+
+.registerDiv{
+  background-color: grey;
+  text-align: center;
+  padding: 30px;
+}
+
+
+@media (min-width: 640px){
+
+  .aboutBlocks div{
+    height: 300px;
+  }
+}

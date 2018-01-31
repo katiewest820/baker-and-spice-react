@@ -1,0 +1,25 @@
+.registerInputDiv{
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 10px;
+  margin:auto;
+}
+
+.registerInputDiv label{
+  justify-self: end;
+}
+
+.registerInputDiv button{
+  grid-column: span 2;
+  margin: auto;
+  width: 100px;
+}
+
+@media (min-width: 640px){
+
+  .registerInputDiv{
+    grid-template-columns: 1fr 4fr;
+    width: 50%;
+  }
+}

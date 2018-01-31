@@ -1,23 +1,24 @@
-.mainHeader{
+.landingPageHeader{
   width: 100%;
   padding: 20px 0px;
   background-color: black;
 }
 
-.mainHeader a{
-  font-size: 12px;
-  padding-left: 10px;
+.landingPageHeader a{
+  font-size: 15px;
+  padding-left: 12px;
   color:white;
   text-decoration: none;
 }
 
 @media (min-width: 640px){
-  .mainHeader{
+  .landingPageHeader{
     padding: 30px;
   }
 
-  .mainHeader a{
+  .landingPageHeader a{
     padding-left: 20px;
     font-size: 18px;
   }
-}  
+}
+
