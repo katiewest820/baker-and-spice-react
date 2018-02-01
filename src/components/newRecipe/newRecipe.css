@@ -26,6 +26,12 @@
   margin-top: 15px;
 }
 
+.instructionsInput{
+  min-height: 300px;
+  max-height: fit-content;
+  
+}
+
 @media (min-width: 640px){
   .newRecipeDiv div{
     width: 50%;
