@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import './app.css';
 import Main from '../main/main';
 import LandingPage from '../landingPage/landingPage';
@@ -8,6 +8,7 @@ import Login from '../login/login';
 import Pantry from '../pantry/pantry';
 import NewRecipe from '../newRecipe/newRecipe';
 import RecipeInspiration from '../recipeInspiration/recipeInspiration';
+import RecipeDetails from '../recipeDetails/recipeDetails';
 
 export default class App extends React.Component {
   render() {
@@ -15,7 +16,8 @@ export default class App extends React.Component {
       <div>
         <Switch>
           <Route exact path="/" component={LandingPage}/>
-          <Route exact path="/main" component={Main} />
+          <Route exact path="/home" component={Main} />
+          <Route exact path="/recipeDetails/:recipeSlug" component={RecipeDetails} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/pantry" component={Pantry} />
