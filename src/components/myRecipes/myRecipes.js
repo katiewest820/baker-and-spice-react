@@ -8,14 +8,12 @@ export default class MyRecipes extends React.Component{
     super()
 
     this.state={
-      isMounted: false,
-      recipes: []
+      recipes: [],
+      recipeSearchInput: ''
     }
   }
 
   componentDidMount(){
-    console.log('hello')
-    this.setState({isMounted: true});
     this.callDBForAllRecipes()
   }
 
@@ -23,42 +21,50 @@ export default class MyRecipes extends React.Component{
     axios.get(`${API_BASE_URL}/recipe/getAllRecipes`)
     .then((response) => {
       let recipes = this.state.recipes
-      if(this.state.isMounted){
-        console.log(response.data.data)
       this.setState({recipes: response.data.data})
-      }
-      console.log(response)
-      console.log(this.state)
-      })
-
-      .catch((err) => {
+    })
+    .catch((err) => {
       console.log(err)
     })
   }
 
-  componentWillUnmount(){
-    this.setState({isMounted: false});
+  //TODO layout for search results????? 
+  setValueOfSearchInput(e){
+    this.setState({recipeSearchInput: e.target.value})
+    console.log(this.state.recipeSearchInput)
+  }
+
+  callDBforOneRecipe(e){
+    e.preventDefault()
+    let searchTerm = this.state.recipeSearchInput.trim().split(' ').join('-')
+    console.log(searchTerm)
+    axios.get(`${API_BASE_URL}/recipe/getRecipe/${searchTerm}`)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((err) => {
+      console.log(err)
+    });
   }
 
   render(){
     let recipe;
     if(this.state.recipes){
       console.log(this.state)
-        recipe = this.state.recipes.map((item, index) => {
-         return (<div key={index}>
-            <Link to={"/recipeDetails/" + item.recipeSlug}><h2>{item.recipeTitle}</h2></Link>
-            <p>{item.recipeInstructions}</p>
-          </div> )
-        })
+      recipe = this.state.recipes.map((item, index) => {
+       return (<div key={index}>
+          <Link to={"/recipeDetails/" + item.recipeSlug}><h2>{item.recipeTitle}</h2></Link>
+        </div> )
+      })
     }
     return(
       <div>
         <h1>My Recipes</h1>
         {recipe}
         <div className="searchMyRecipes">
-          <label>Search My Recipes</label>
-          <input type="text"/>
-          <button>Search</button>
+          <label>Search Your Recipes</label>
+          <input value={this.state.recipeSearchInput} onChange={this.setValueOfSearchInput.bind(this)} type="text"/>
+          <button onClick={this.callDBforOneRecipe.bind(this)}>Search</button>
         </div>
       </div>
     )

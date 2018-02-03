@@ -9,6 +9,7 @@ import Pantry from '../pantry/pantry';
 import NewRecipe from '../newRecipe/newRecipe';
 import RecipeInspiration from '../recipeInspiration/recipeInspiration';
 import RecipeDetails from '../recipeDetails/recipeDetails';
+import DeleteMsg from '../deleteMsg/deleteMsg';
 
 export default class App extends React.Component {
   render() {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
           <Route exact path="/pantry" component={Pantry} />
           <Route exact path="/newRecipe" component={NewRecipe} />
           <Route exact path="/recipeInspiration" component={RecipeInspiration} />
+          <Route exact path="/deleteMsg/:recipeSlug" component={DeleteMsg} />
         </Switch>
       </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../header/header';
 import IngredientInputs from '../ingredientInputs/ingredientInputs';
 import axios from 'axios';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';
 
 import './newRecipe.css';
