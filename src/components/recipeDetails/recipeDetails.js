@@ -3,6 +3,7 @@ import Header from '../header/header';
 import axios from 'axios';
 import {API_BASE_URL} from '../../config';
 import {Link, Redirect} from 'react-router-dom';
+import {submitNewPantryItem} from '../../actions/pantryActions';
 import './recipeDetails.css';
 import InStockValueDropDown from '../inStockValueDropDown/inStockValueDropDown';
 
