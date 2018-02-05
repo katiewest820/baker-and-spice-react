@@ -37,19 +37,13 @@ export default class IngredientInputs extends React.Component{
     }
 
     return(
-      
-        
-        <div className="ingredientInputDiv">
-          <label>Ingredients</label>
-
-          {ingredients}
-          
-          <input  value={this.state.name} onChange={this.saveNewIngredient.bind(this)} placeholder="Ingredient" name="name" type="text"/>
-          <input  value={this.state.quantity} onChange={this.saveNewIngredient.bind(this)} placeholder="Quantity" name="quantity" type="text"/>
-          <button onClick={this.updateParentAndClearInput.bind(this)}>Add</button>
-        
-        </div>
-      
+      <div className="ingredientInputDiv">
+        <label>Ingredients</label>
+        {ingredients}
+        <input  value={this.state.name} onChange={this.saveNewIngredient.bind(this)} placeholder="Ingredient" name="name" type="text"/>
+        <input  value={this.state.quantity} onChange={this.saveNewIngredient.bind(this)} placeholder="Quantity" name="quantity" type="text"/>
+        <button onClick={this.updateParentAndClearInput.bind(this)}>Add</button>
+      </div>
     )
   }
 }

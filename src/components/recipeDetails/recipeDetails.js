@@ -3,6 +3,8 @@ import Header from '../header/header';
 import axios from 'axios';
 import {API_BASE_URL} from '../../config';
 import {Link, Redirect} from 'react-router-dom';
+import './recipeDetails.css';
+import InStockValueDropDown from '../inStockValueDropDown/inStockValueDropDown';
 
 export default class RecipeDetails extends React.Component{
   constructor(props){
@@ -10,7 +12,8 @@ export default class RecipeDetails extends React.Component{
       this.state ={
         recipe: '',
         pantryItems: [],
-        missingPantryItems: []
+        missingPantryItems: [],
+        outOfStockItems: []
       }
   }
 
@@ -48,14 +51,39 @@ export default class RecipeDetails extends React.Component{
   filterPantry(){
     let recipeItems = [];
     let pantryItems = [];
+    let outOfStockItems = [];
     for(let i = 0; i < this.state.recipe.recipeIngredients.length; i++){
       recipeItems.push(this.state.recipe.recipeIngredients[i].name.trim())
     }
     for(let i = 0; i < this.state.pantryItems.length; i++){
       pantryItems.push(this.state.pantryItems[i].item.trim())
     }
+    for(let i = 0; i < this.state.pantryItems.length; i++){
+      if(this.state.pantryItems[i].inStock == false){
+        outOfStockItems.push(this.state.pantryItems[i].item.trim())
+      }
+    }
     let matches = recipeItems.filter(name => pantryItems.indexOf(name) < 0)
-      this.setState({missingPantryItems: matches})
+    this.setState({missingPantryItems: matches})
+    let outOfStockMatches = recipeItems.filter(name => outOfStockItems.indexOf(name) > -1)
+    this.setState({outOfStockItems: outOfStockMatches})
+    console.log(outOfStockMatches) 
+  }
+
+  addMissingItemToPantry(item, inStockValue){
+    console.log(item)
+    console.log(inStockValue)
+    axios.post(`${API_BASE_URL}/pantry/newPantryItem`, {
+      item: item,
+      inStock: inStockValue
+    })
+    .then((response) => {
+      console.log(response)
+      this.getPantryItemsFromDB()
+    })
+    .catch((err) => {
+      console.log(err)
+    });
   }
     
   render(){
@@ -63,20 +91,29 @@ export default class RecipeDetails extends React.Component{
     let missingIngredient;
     if(this.state.recipe){
       ingredients = this.state.recipe.recipeIngredients.map((item, index) => {
-        return (
-          <div key={index}>
-            <p>{item.name}</p>
-            <p>{item.quantity}</p>
-          </div>
-        )
-      })
+        if(this.state.outOfStockItems.find((name) => { return name == item.name})){
+          return (
+            <div key={index}>
+              <p className="outOfStock">*{item.name}</p>
+              <p>{item.quantity}</p>
+            </div>
+          )
+        }else{
+          return (
+            <div key={index}>
+              <p className="inStock">{item.name}</p>
+              <p>{item.quantity}</p>
+            </div>
+          )
+        }
+      })  
     }
     if(this.state.missingPantryItems.length > 0){
       missingIngredient = this.state.missingPantryItems.map((item, index) =>{
         return(
           <div key={index}>
             <p className="missingItem">{item}</p>
-            <button>Add To Pantry</button>
+            <InStockValueDropDown item={item} onClick={this.addMissingItemToPantry.bind(this)}/>
           </div>
         )
       })
@@ -86,7 +123,6 @@ export default class RecipeDetails extends React.Component{
     return(
       <div>
         <Header />
-
         <div>
           <h2>{this.state.recipe.recipeTitle}</h2>
           <div>
@@ -96,9 +132,10 @@ export default class RecipeDetails extends React.Component{
           <div>  
             <h3>Ingredients</h3>
             {ingredients}
+            <p>Pantry item is out of stock = <span className= "outOfStock">*</span> </p>
           </div>  
           <div>
-            <h2>You are missing the following recipe ingredients from your pantry:</h2>
+            <h2>The following recipe ingredients are missing from your pantry:</h2>
             {missingIngredient}
           </div>
           <button>Edit</button>

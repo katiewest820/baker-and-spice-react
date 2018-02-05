@@ -30,7 +30,7 @@ export default class NewRecipe extends React.Component{
   updateIngredient(target, index){
     console.log(target)
     console.log(index)
-    let updatedArr = this.state.recipeIngredients.slice();
+    let updatedArr = this.state.recipeIngredients;
     updatedArr[index][target.name] = target.value;
     console.log(updatedArr)
     this.setState({recipeIngredients: updatedArr})
