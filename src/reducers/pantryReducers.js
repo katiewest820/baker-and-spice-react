@@ -16,6 +16,8 @@ export default(state=initialState, action) => {
     case SUBMIT_NEW_PANTRY_ITEM: 
       let newPantryArr = state.pantryItems.slice();
       newPantryArr.push(action.payload.data.data);
+      console.log(action)
+      console.log(state)
       return state = {...state, pantryItems: newPantryArr}
 
     //getting all pantry items

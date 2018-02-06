@@ -2,11 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from '../../config';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import store from '../../store';
+import {getAllRecipes, getOneRecipe} from '../../actions/recipeActions';
 
-export default class MyRecipes extends React.Component{
+export class MyRecipes extends React.Component{
   constructor(){
     super()
-
     this.state={
       recipes: [],
       recipeSearchInput: ''
@@ -14,18 +16,7 @@ export default class MyRecipes extends React.Component{
   }
 
   componentDidMount(){
-    this.callDBForAllRecipes()
-  }
-
-  callDBForAllRecipes(){
-    axios.get(`${API_BASE_URL}/recipe/getAllRecipes`)
-    .then((response) => {
-      let recipes = this.state.recipes
-      this.setState({recipes: response.data.data})
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    this.props.getAllRecipes(`${API_BASE_URL}/recipe/getAllRecipes`)
   }
 
   //TODO layout for search results????? 
@@ -35,23 +26,26 @@ export default class MyRecipes extends React.Component{
   }
 
   callDBforOneRecipe(e){
-    e.preventDefault()
+    e.preventDefault();
     let searchTerm = this.state.recipeSearchInput.trim().split(' ').join('-')
-    console.log(searchTerm)
-    axios.get(`${API_BASE_URL}/recipe/getRecipe/${searchTerm}`)
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((err) => {
-      console.log(err)
-    });
+    this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${searchTerm}`)
+    
+    
+    // console.log(searchTerm)
+    // axios.get(`${API_BASE_URL}/recipe/getRecipe/${searchTerm}`)
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((err) => {
+    //   console.log(err)
+    // });
   }
 
   render(){
     let recipe;
-    if(this.state.recipes){
-      console.log(this.state)
-      recipe = this.state.recipes.map((item, index) => {
+    if(this.props.allRecipes.length > 0){
+      console.log(this.props.allRecipes)
+      recipe = this.props.allRecipes.map((item, index) => {
        return (<div key={index}>
           <Link to={"/recipeDetails/" + item.recipeSlug}><h2>{item.recipeTitle}</h2></Link>
         </div> )
@@ -70,3 +64,9 @@ export default class MyRecipes extends React.Component{
     )
   }
 } 
+
+export const mapStateToProps = state => ({
+  allRecipes: state.recipeReducers.allRecipes
+});
+
+export default connect(mapStateToProps, {getAllRecipes, getOneRecipe})(MyRecipes);
