@@ -3,27 +3,16 @@ import Header from '../header/header';
 import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import {API_BASE_URL} from '../../config';
+import {connect} from 'react-redux';
+import store from '../../store';
+import {deleteRecipe} from '../../actions/recipeActions';
 
-export default class DeleteMsg extends React.Component{
-  constructor(props){
-    super(props)
-    this.state={
-      deleted: false
-    }
-  }
+export class DeleteMsg extends React.Component{
 
   apiCallForDelete(){
     console.log(this)
     let recipeSlug = this.props.match.params.recipeSlug;
-    axios.delete(`${API_BASE_URL}/recipe/deleteOne/${recipeSlug}`)
-    .then((response) => {
-      console.log(response)
-      this.setState({deleted: true})
-      console.log(this.state)
-    })
-    .catch((err) => {
-      console.log(err)
-    });
+    this.props.deleteRecipe(`${API_BASE_URL}/recipe/deleteOne/${recipeSlug}`);
   }
 
   render(){
@@ -34,9 +23,15 @@ export default class DeleteMsg extends React.Component{
           <h1>Are you sure you want to delete this recipe?</h1>
           <Link to={"/recipeDetails/" + this.props.match.params.recipeSlug}><button>No</button></Link>
           <button onClick={this.apiCallForDelete.bind(this)}>Yes</button>
-          {this.state.deleted && (<Redirect to="/home"/>)}
+          {this.props.deleted && (<Redirect to="/home"/>)}
         </div>
       </div>
     )
   }
 }
+
+export const mapStateToProps = state => ({
+  deleted: state.recipeReducers.deleted
+});
+
+export default connect(mapStateToProps, {deleteRecipe})(DeleteMsg);

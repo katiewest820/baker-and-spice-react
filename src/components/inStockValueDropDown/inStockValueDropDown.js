@@ -1,30 +1,28 @@
 import React from 'react';
+import {reduxForm, Field, reset} from 'redux-form';
 
-export default class InStockValueDropDown extends React.Component{
-  constructor(props){
-    super(props)
-    console.log(this.props)
-    this.state = {
-      inStockValue: true
-    }
-  }
+export class InStockValueDropDown extends React.Component{
   
   updateInStockValue(e){
-    this.setState({inStockValue: e.target.value})
+    let itemName = "item" + this.props.index
+    this.props.onClick(this.props.item, e[itemName])
   }
 
 
   render(){
     return(
-      <div>
-        <select onChange={this.updateInStockValue.bind(this)}>
-          <option value={true}>In Stock</option>
-          <option value={false} >Out of Stock</option>
-        </select>
-        <button value={this.props.item} onClick={() => this.props.onClick(this.props.item, this.state.inStockValue)}>Add To Pantry</button>
-      </div>  
+      <form onSubmit={this.props.handleSubmit(this.updateInStockValue.bind(this))}>
+      <Field name={"item" + this.props.index} component="select" > 
+        <option></option>
+        <option value={true}>In Stock</option>
+        <option value={false}>Out of Stock</option>
+      </Field>
+      <button type="submit">Add to Pantry </button>
+      </form>  
     )
   }
 }
 
-
+export default reduxForm({
+  form: 'inStockDropDown' 
+})(InStockValueDropDown);

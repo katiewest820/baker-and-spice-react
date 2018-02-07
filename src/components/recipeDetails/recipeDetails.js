@@ -34,9 +34,17 @@ export class RecipeDetails extends React.Component{
   }
 
   addMissingItemToPantry(item, inStockValue){
-    let newPantryItem = {
-      item: item,
-      inStock: inStockValue
+    let newPantryItem;
+    if(inStockValue == undefined){
+      newPantryItem = {
+        item: item,
+        inStock: true
+      }
+    }else{
+      newPantryItem = {
+        item: item,
+        inStock: inStockValue
+      }
     }
     this.props.submitNewPantryItem(`${API_BASE_URL}/pantry/newPantryItem`, newPantryItem)
     .then(() => {
@@ -75,7 +83,7 @@ export class RecipeDetails extends React.Component{
         return(
           <div key={index}>
             <p className="missingItem">{item}</p>
-            <InStockValueDropDown item={item} onClick={this.addMissingItemToPantry.bind(this)}/>
+            <InStockValueDropDown item={item} index={index} onClick={this.addMissingItemToPantry.bind(this)}/>
           </div>
         )
       })

@@ -1,49 +1,59 @@
 import React from 'react';
 import './ingredientInputs.css';
 import IngredientList from '../ingredientList/ingredientList';
-export default class IngredientInputs extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = this.getInitialState()
-  }
+import {reduxForm, Field, reset} from 'redux-form';
+import {newRecipeIngredientList} from '../../actions/recipeActions';
+import {connect} from 'react-redux';
 
+export class IngredientInputs extends React.Component{
 
-  getInitialState(){
-    return ({
-      name: '',
-      quantity: ''
-    })
-  }
-
-  saveNewIngredient(e){
-    this.setState({[e.target.name]: e.target.value})
-  }
-
-  updateParentAndClearInput(){
-    console.log(this.state)
-    this.props.onSubmit(this.state);
-    this.setState(this.getInitialState())
+  saveNewIngredient(value){
+    this.props.dispatch(newRecipeIngredientList(value))
+    this.props.dispatch(reset('ingredientInputs'))
   }
   
   render(){
+    console.log(this.props.recipeIngredientList)
     let ingredients;
-    if(this.props.ingredients.length > 0){
-      ingredients = this.props.ingredients.map((item, index) => {
+    if(this.props.recipeIngredientList.length > 0){
+      console.log(this.props.recipeIngredientList)
+       ingredients = this.props.recipeIngredientList.map((item, index) => {
         return(
-          <IngredientList index={index} name={item.name} quantity={item.quantity} updateIngredient={this.props.updateIngredient}/>
+          <IngredientList key={index} index={index} name={item.name} quantity={item.quantity} updateIngredient={this.props.updateIngredient}/>
         )
       })
-    
     }
 
     return(
       <div className="ingredientInputDiv">
         <label>Ingredients</label>
         {ingredients}
-        <input  value={this.state.name} onChange={this.saveNewIngredient.bind(this)} placeholder="Ingredient" name="name" type="text"/>
-        <input  value={this.state.quantity} onChange={this.saveNewIngredient.bind(this)} placeholder="Quantity" name="quantity" type="text"/>
-        <button onClick={this.updateParentAndClearInput.bind(this)}>Add</button>
+        <form onSubmit={this.props.handleSubmit(value => this.saveNewIngredient(value))}>
+          <Field 
+           component="input"
+           placeholder="Ingredient" 
+           name="name" 
+           type="text"
+          />
+          <Field 
+           component="input"
+           placeholder="Quantity" 
+           name="quantity" 
+           type="text"
+          />
+          <button type="submit">Add</button>
+        </form>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  recipeIngredientList: state.recipeReducers.newRecipeIngredientList 
+})
+
+IngredientInputs = connect(mapStateToProps)(IngredientInputs)
+
+export default reduxForm({
+  form: 'ingredientInputs' 
+})(IngredientInputs);
