@@ -51,10 +51,35 @@
   padding: 30px;
 }
 
+.registerDiv h1{
+  margin: 0;
+  margin-bottom: 10px;
+}
 
+.registerDiv p{
+  font-size: 16px;
+}
+
+.registerDiv button{
+  padding: 15px;
+  font-size: 15px;
+  background: none;
+  font-weight: bold;
+  border: solid 3px black;
+}
+
+.registerDiv button:hover{
+  border: solid 3px yellow;
+  color:yellow;
+  cursor: pointer;
+}
 @media (min-width: 640px){
 
   .aboutBlocks div{
     height: 300px;
+  }
+
+  .registerDiv p{
+    font-size: 20px;
   }
 }

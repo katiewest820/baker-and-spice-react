@@ -1,42 +1,62 @@
 import React from 'react';
 import LandingPageHeader from '../landingPageHeader/landingPageHeader';
-//import {connect} from 'react-redux';
+import {reduxForm, Field, reset} from 'redux-form';
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {login} from '../../actions/authActions';
+import {API_BASE_URL} from '../../config';
 import './login.css';
-export default class Login extends React.Component{
-  constructor(props){
-    super(props)
-    this.state={
-      userName: '',
-      password: ''
-    }
-  }
 
-  componentDidUpdate(){
-    console.log(this.state)
-  }
 
-  grabLoginValues(e){
-    e.preventDefault()
-    console.log(this)
-    this.setState({userName: this.userNameInput.value});
-    this.setState({password: this.passwordInput.value});
-    
+export class Login extends React.Component{
+
+  grabLoginValuesAndMakeAPICall(values){
+    console.log(values)
+    this.props.login(`${API_BASE_URL}/auth/login`, values)
+    this.props.dispatch(reset('userLogin'))
   }
 
   render(){
+    let loginErrorMsg = <p className="loginErrorMsg"></p>
+    if(this.props.errorMessage.length > 0){
+      loginErrorMsg = <p className="loginErrorMsg">{this.props.errorMessage}</p>
+    }
     return(
       <div >
-        <LandingPageHeader />
-        <div className="loginDiv">
+        <LandingPageHeader /> 
+        {loginErrorMsg}
+        
+        <form className="loginDiv" onSubmit={this.props.handleSubmit(values => this.grabLoginValuesAndMakeAPICall(values))}>
           <label>User Name</label>
-          <input ref={input => {this.userNameInput = input}} type="text" />
+          <Field
+            type="text" 
+            component="input"
+            name="userName"
+          />
           <label>password</label>
-          <input ref={input => {this.passwordInput = input}} type="text"/>
-          <button onClick={this.grabLoginValues.bind(this)}>Submit</button>
-        </div>
+          <Field 
+            type="text"
+            component="input"
+            name="password"
+          />
+          <button type="submit">Submit</button>
+          {this.props.loginRedirect && (
+            <Redirect to="/home"/>
+          )}
+        </form>
+        
       </div>
     )
   }
 }
 
-//export default connect()(Login)
+const mapStateToProps = state => ({
+  errorMessage: state.authReducers.errorMsg,
+  loginRedirect: state.authReducers.loginRedirect
+})
+
+Login = connect(mapStateToProps, {login})(Login)
+
+export default reduxForm({
+  form: 'userLogin' 
+})(Login);

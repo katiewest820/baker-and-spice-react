@@ -4,6 +4,7 @@
   grid-template-columns: 1fr 2fr;
   grid-gap: 10px;
   margin:auto;
+  border: solid 3px black;
 }
 
 .registerInputDiv label{
@@ -16,10 +17,22 @@
   width: 100px;
 }
 
+.registerErrorMsg{
+  color: red;
+  min-height: 20px;
+  min-width: 350px;
+  margin:auto;
+  margin-top: 20%;
+  text-align: center;
+}
+
 @media (min-width: 640px){
 
   .registerInputDiv{
     grid-template-columns: 1fr 4fr;
     width: 50%;
+  }
+  .registerErrorMsg{
+    margin-top: 10%
   }
 }

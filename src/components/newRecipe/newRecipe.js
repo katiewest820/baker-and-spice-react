@@ -11,25 +11,6 @@ import {reduxForm, Field, reset} from 'redux-form';
 import './newRecipe.css';
 
 class NewRecipe extends React.Component{
-  // constructor(props){
-  //   super(props)
-
-  //   this.state ={
-  //     recipeTitle: '',
-  //     recipeInstructions: '',
-  //     recipeIngredients: [],
-  //     recipeSlug: ''
-  //   }
-  // }
-
-  // handleChangeInput(e){
-  //   this.setState({[e.target.name]: e.target.value});
-  // }
-
-  // addIngredient(value){
-  //   let recipeIngredientsArr = this.state.recipeIngredients;
-  //     this.setState({recipeIngredients: [...recipeIngredientsArr, {name: value.name, quantity: value.quantity}] });
-  // }
 
   updateIngredient(value, name, index){
     let currentState = store.getState(this.props.recipeReducers);
@@ -47,9 +28,7 @@ class NewRecipe extends React.Component{
     this.props.submitNewRecipe(`${API_BASE_URL}/recipe/newRecipe`, newRecipeValues)
   }
 
-
-  render(){
-    
+  render(){ 
     return(
       <div>
         <Header />
@@ -80,7 +59,6 @@ class NewRecipe extends React.Component{
               />
             </div> 
             <button type="submit">Submit Recipe</button>
-
             { this.props.recipeSlug && (
               <Redirect to={"/recipeDetails/" + this.props.recipeSlug} />
             )}

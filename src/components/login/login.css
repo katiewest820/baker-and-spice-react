@@ -3,8 +3,17 @@
   grid-template-columns: 1fr 2fr;
   grid-gap: 5px;
   padding: 20px;
-  margin: 20% 3%;
+  margin: 0% 3%;
   border: solid 3px black;
+}
+
+.loginErrorMsg{
+  color: red;
+  min-height: 20px;
+  min-width: 350px;
+  margin:auto;
+  margin-top: 20%;
+  text-align: center;
 }
 
 @media (min-width: 640px){
@@ -14,7 +23,9 @@
     grid-template-columns: 1fr 3fr;
     padding: 30px;
     margin:auto;
+  }
+
+  .loginErrorMsg{
     margin-top: 10%;
-    
   }
 }
