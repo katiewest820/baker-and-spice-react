@@ -1,19 +1,21 @@
 import React from 'react';
 import Header from '../header/header';
-import axios from 'axios';
+//import axios from 'axios';
 import {API_BASE_URL} from '../../config';
 import Toggle from 'react-toggle';
 import {connect} from 'react-redux';
-import store from '../../store';
+//import store from '../../store';
 import {getPantryItems, editPantryItem, deletePantryItem} from '../../actions/pantryActions';
 import NewPantryItemForm from '../newPantryItemForm/newPantryItemForm';
 import './pantry.css';
 import '../../../node_modules/react-toggle/style.css';
 
+
 export class Pantry extends React.Component{
 
   componentDidMount(){
-    this.props.getPantryItems(`${API_BASE_URL}/pantry/allPantryItems`)
+    let userId = localStorage.getItem('userId');
+    this.props.getPantryItems(`${API_BASE_URL}/pantry/allPantryItems/${userId}`)
   }
 
   deletePantryItemFromDB(value){

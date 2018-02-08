@@ -7,7 +7,8 @@ import './header.css';
 export class Header extends React.Component{
 
 logUserOut(){
-  this.props.dispatch(logout())
+  console.log('yes')
+  this.props.logout()
 }
   render(){
     return(
@@ -16,10 +17,14 @@ logUserOut(){
         <Link to="/newRecipe">New Recipe</Link>
         <Link to="/pantry">Pantry</Link>
         <Link to="/recipeInspiration">Recipe Inspiration</Link>
-        <Link to="/" onClick={this.logUserOut}>Log Out</Link>
+        <Link to="/" onClick={this.logUserOut.bind(this)}>Log Out</Link>
       </header>
     )
   }
 }
 
-export default connect()(Header);
+export const mapStateToProps = state => ({
+  logout: state.authReducers.logoutRedirect
+});
+
+export default connect(mapStateToProps, {logout})(Header);

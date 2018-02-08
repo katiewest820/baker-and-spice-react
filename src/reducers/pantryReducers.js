@@ -1,4 +1,4 @@
-import {API_BASE_URL} from '../config';
+//import {API_BASE_URL} from '../config';
 import {SUBMIT_NEW_PANTRY_ITEM, 
         EDIT_PANTRY_ITEM, 
         DELETE_PANTRY_ITEM, 

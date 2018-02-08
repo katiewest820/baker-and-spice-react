@@ -7,7 +7,6 @@ import {login} from '../../actions/authActions';
 import {API_BASE_URL} from '../../config';
 import './login.css';
 
-
 export class Login extends React.Component{
 
   grabLoginValuesAndMakeAPICall(values){
@@ -17,6 +16,7 @@ export class Login extends React.Component{
   }
 
   render(){
+    console.log(localStorage.getItem('userId'))
     let loginErrorMsg = <p className="loginErrorMsg"></p>
     if(this.props.errorMessage.length > 0){
       loginErrorMsg = <p className="loginErrorMsg">{this.props.errorMessage}</p>
@@ -35,7 +35,7 @@ export class Login extends React.Component{
           />
           <label>password</label>
           <Field 
-            type="text"
+            type="password"
             component="input"
             name="password"
           />

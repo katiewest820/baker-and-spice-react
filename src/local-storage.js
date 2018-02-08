@@ -1,20 +1,21 @@
-export const saveAuthToken = (authToken) => {
+export const saveAuthTokenAndUserId = (authToken, userId) => {
   try {
     localStorage.setItem('authToken', authToken)
+    localStorage.setItem('userId', userId)
+
     console.log(localStorage.getItem('authToken'))
+    console.log(localStorage.getItem('userId'))
   } catch(e) {}
 };
 
-export const clearAuthToken = () => {
+export const clearLocalStorage = () => {
   try {
-    localStorage.removeItem('authToken')
-    console.log(localStorage.getItem('authToken'))
-  } catch(e) {}
-};
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userId');
 
-export const getToken = () => {
-  try {
-  let token = localStorage.getItem('authToken')
-    console.log(token)
+
+    console.log(localStorage.getItem('authToken'))
+    console.log(localStorage.getItem('userId'))
   } catch(e) {}
+  
 };

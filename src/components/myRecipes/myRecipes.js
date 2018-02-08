@@ -1,23 +1,29 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import {API_BASE_URL} from '../../config';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import store from '../../store';
-import {reduxForm, Field, reset} from 'redux-form';
+//import store from '../../store';
+import {reset} from 'redux-form';
 import {getAllRecipes, getOneRecipe} from '../../actions/recipeActions';
 import SearchMyRecipesForm from '../searchMyRecipesForm/searchMyRecipesForm';
 
 export class MyRecipes extends React.Component{
 
   componentDidMount(){
-    this.props.getAllRecipes(`${API_BASE_URL}/recipe/getAllRecipes`)
+    let userId = localStorage.getItem('userId');
+    console.log(userId)
+    
+    this.props.getAllRecipes(`${API_BASE_URL}/recipe/getAllRecipes/${userId}`)
   }
  
   callDBforOneRecipe(values){
+    let userId = localStorage.getItem('userId');
+    console.log(userId)
     console.log(values)
     let searchTerm = values.myRecipeSearch.trim().toLowerCase().split(' ').join('-')
-    this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${searchTerm}`);
+    this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${userId}/${searchTerm}`);
+    this.props.reset('searchMyRecipes')
   }
 
   render(){
@@ -59,4 +65,4 @@ export const mapStateToProps = state => ({
   errorMsg: state.recipeReducers.errorMsg
 });
 
-export default connect(mapStateToProps, {getAllRecipes, getOneRecipe})(MyRecipes);
+export default connect(mapStateToProps, {getAllRecipes, getOneRecipe, reset})(MyRecipes);

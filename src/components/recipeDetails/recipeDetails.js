@@ -1,15 +1,16 @@
 import React from 'react';
 import Header from '../header/header';
-import axios from 'axios';
+//import axios from 'axios';
 import {connect} from 'react-redux';
-import store from '../../store';
+//import store from '../../store';
 import {API_BASE_URL} from '../../config';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {getPantryItems, submitNewPantryItem} from '../../actions/pantryActions';
 import {getOneRecipe} from '../../actions/recipeActions';
-import {missingPantryIngredients, outOfStockPantryIngredients} from '../../actions/filterIngredientsActions';
+import {missingPantryIngredients} from '../../actions/filterIngredientsActions';
 import './recipeDetails.css';
 import InStockValueDropDown from '../inStockValueDropDown/inStockValueDropDown';
+//let userId = localStorage.getItem('userId');
 
 export class RecipeDetails extends React.Component{
 
@@ -19,9 +20,10 @@ export class RecipeDetails extends React.Component{
 
   apiCallsForOneRecipeAndPantryItems(){
     let recipeSlug = this.props.match.params.recipeSlug;
+    let userId = localStorage.getItem('userId')
     Promise.all([
-      this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${recipeSlug}`),
-      this.props.getPantryItems(`${API_BASE_URL}/pantry/allPantryItems`)
+      this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${userId}/${recipeSlug}`),
+      this.props.getPantryItems(`${API_BASE_URL}/pantry/allPantryItems/${userId}`)
     ]).then(() => {
       this.filterPantry()
     });
@@ -35,7 +37,7 @@ export class RecipeDetails extends React.Component{
 
   addMissingItemToPantry(item, inStockValue){
     let newPantryItem;
-    if(inStockValue == undefined){
+    if(inStockValue === undefined){
       newPantryItem = {
         item: item,
         inStock: true
@@ -54,14 +56,14 @@ export class RecipeDetails extends React.Component{
     
   render(){
     let thisRecipeDetails = this.props.oneRecipe
-    let currentPantryList = this.props.pantryItems
+    //let currentPantryList = this.props.pantryItems
     let missing = this.props.missingIngredients
     let outOfStock = this.props.outOfStockIngredients
     let ingredients;
     let missingIngredients;
     if(thisRecipeDetails.recipeIngredients){
       ingredients = thisRecipeDetails.recipeIngredients.map((item, index) => {
-        if(outOfStock.find((name) => { return name == item.name})){
+        if(outOfStock.find((name) => { return name === item.name})){
           return (
             <div key={index}>
               <p className="outOfStock">*{item.name}</p>

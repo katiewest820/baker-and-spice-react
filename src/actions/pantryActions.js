@@ -4,9 +4,10 @@ export const EDIT_PANTRY_ITEM = 'EDIT_PANTRY_ITEM';
 export const DELETE_PANTRY_ITEM = 'DELETE_PANTRY_ITEM';
 export const GET_PANTRY_ITEMS = 'GET_PANTRY_ITEMS';
 let token = localStorage.getItem('authToken');
+let userId = localStorage.getItem('userId');
 
 export function submitNewPantryItem(url, pantryItems){
-  const request = axios.post(url, {token: token, item: pantryItems.item, inStock: pantryItems.inStock});
+  const request = axios.post(url, {token: token, userId: userId, item: pantryItems.item, inStock: pantryItems.inStock});
   console.log(pantryItems)
   return {
     type: SUBMIT_NEW_PANTRY_ITEM,

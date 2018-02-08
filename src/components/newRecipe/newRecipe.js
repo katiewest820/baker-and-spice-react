@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../header/header';
 import IngredientInputs from '../ingredientInputs/ingredientInputs';
-import axios from 'axios';
+//import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';
 import {connect} from 'react-redux';
 import {editNewRecipeIngredientList, submitNewRecipe} from '../../actions/recipeActions';
 import store from '../../store';
-import {reduxForm, Field, reset} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import './newRecipe.css';
 
 class NewRecipe extends React.Component{

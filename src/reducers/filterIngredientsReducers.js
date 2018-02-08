@@ -12,6 +12,7 @@ export default(state=initialState, action) => {
       let recipeIngredients = [];
       let pantryIngredients = [];
       let outOfStockItems = [];
+      console.log(action)
       for(let i = 0; i < action.payload.pantryItems.length; i++){
          pantryIngredients.push(action.payload.pantryItems[i].item.trim())
       }
@@ -19,7 +20,7 @@ export default(state=initialState, action) => {
         recipeIngredients.push(action.payload.recipeItems[i].name.trim())
       }
       for(let i = 0; i < action.payload.pantryItems.length; i++){
-        if(action.payload.pantryItems[i].inStock == false){
+        if(action.payload.pantryItems[i].inStock === false){
           outOfStockItems.push(action.payload.pantryItems[i].item.trim())
         }
       }

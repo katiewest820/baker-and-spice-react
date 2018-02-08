@@ -1,5 +1,5 @@
-import axios from 'axios';
-import {API_BASE_URL} from '../config';
+//import axios from 'axios';
+//import {API_BASE_URL} from '../config';
 import {GET_ONE_RECIPE, 
         GET_ALL_RECIPES, 
         DELETE_RECIPE,
@@ -21,6 +21,7 @@ export default(state=initialState, action) => {
   switch(action.type){
     case GET_ONE_RECIPE:
       //error handling with one recipe search
+      console.log(action)
       if(action.payload.response){
         console.log(action.payload.response)
         return state = {...state, errorMsg: 'No results found. Please try your search again', deleted: false, recipeSlug: ''} 

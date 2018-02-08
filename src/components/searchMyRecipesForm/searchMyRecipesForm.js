@@ -1,8 +1,11 @@
 import React from 'react';
-import {reduxForm, Field, reset} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 
 export const required = value => value ? undefined : 'Required';
 export class SearchMyRecipesForm extends React.Component{
+
+ 
+
 
   render(){
     //TODO Required message for no input

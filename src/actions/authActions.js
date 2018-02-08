@@ -1,6 +1,3 @@
-//import jwtDecode from 'jwt-decode';
-//import {SubmissionError} from 'redux-form';
-//import {API_BASE_URL} from '../config';
 import axios from 'axios';
 
 export const LOGIN = 'LOGIN';
@@ -32,6 +29,6 @@ export function register(url, registerData){
   };
 };
 
-export const logout = () => {
+export const logout = () => ({
   type: LOGOUT
-};
+});

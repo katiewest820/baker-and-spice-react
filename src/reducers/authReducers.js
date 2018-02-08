@@ -1,10 +1,7 @@
 import {LOGIN, REGISTER, LOGOUT} from '../actions/authActions';
-import {saveAuthToken, clearAuthToken} from '../local-storage';
+import {saveAuthTokenAndUserId, clearLocalStorage} from '../local-storage';
 
 const initialState = {
-  userName: '',
-  password: '',
-  token: '',
   errorMsg: '',
   loginRedirect: false
 }
@@ -23,8 +20,8 @@ export default(state=initialState, action) => {
       if(action.payload.request.response === 'username and password required'){
         return state = {...state, errorMsg: 'A username and password are requred to login', loginRedirect: false}
       }
-      saveAuthToken(action.payload.data.token)
-      return state = {...state, errorMsg: '', loginRedirect: true, token: action.payload.data.token}
+      saveAuthTokenAndUserId(action.payload.data.token, action.payload.data.userId)
+      return state = {...state, errorMsg: '', loginRedirect: true}
     case REGISTER:
     console.log(state)
     console.log(action)
@@ -40,12 +37,12 @@ export default(state=initialState, action) => {
       if(action.payload.request.response === 'first and last name required'){
         return state = {...state, errorMsg: 'Please enter a first and last name', loginRedirect: false}
       }
-      saveAuthToken(action.payload.data.token)
-      return state = {...state, errorMsg: '', loginRedirect: true}
+      saveAuthTokenAndUserId(action.payload.data.token, action.payload.data.userId)
+      return state = {...state, errorMsg: '', loginRedirect: false}
     case LOGOUT:
       console.log(state)
       console.log(action)
-      clearAuthToken()
+      clearLocalStorage()
       return state = {...state, loginRedirect: false, errorMsg: '', token: ''}
     default:
       return state

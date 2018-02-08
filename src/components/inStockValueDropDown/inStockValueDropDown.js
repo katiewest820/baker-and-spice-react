@@ -1,5 +1,5 @@
 import React from 'react';
-import {reduxForm, Field, reset} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 
 export class InStockValueDropDown extends React.Component{
   

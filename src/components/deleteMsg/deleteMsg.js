@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../header/header';
 import {Link, Redirect} from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
 import {API_BASE_URL} from '../../config';
 import {connect} from 'react-redux';
-import store from '../../store';
+//import store from '../../store';
 import {deleteRecipe} from '../../actions/recipeActions';
 
 export class DeleteMsg extends React.Component{

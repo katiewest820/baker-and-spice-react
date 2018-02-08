@@ -2,7 +2,7 @@ import React from 'react';
 //import {connect} from 'react-redux';
 import LandingPageHeader from '../landingPageHeader/landingPageHeader';
 import {Link} from 'react-router-dom';
-import Register from '../register/register';
+//import Register from '../register/register';
 import './landingPage.css';
 export default class LandingPage extends React.Component{
 
@@ -37,7 +37,7 @@ export default class LandingPage extends React.Component{
         </div> 
         <div className="registerDiv">
           <h1>Try it out NOW!</h1>
-          <p>Login with a Demo Account to see more</p>
+          <p>Login with a Demo Account to see more<br/> TODO demo login</p>
           <Link to="/home"><button>Demo Account Login</button></Link>
         </div> 
       </section>
