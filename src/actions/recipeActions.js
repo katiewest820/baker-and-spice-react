@@ -39,13 +39,15 @@ export function deleteRecipe(url){
 export function submitNewRecipe(url, newRecipeData){
   let token = localStorage.getItem('authToken');
   let userId = localStorage.getItem('userId');
-  const request = axios.post(url, {
-    token: token,
-    userId: userId,
-    recipeTitle: newRecipeData.recipeTitle, 
-    recipeIngredients: newRecipeData.recipeIngredients,
-    recipeInstructions: newRecipeData.recipeInstructions
-  });
+  console.log(userId)
+   const request = axios.post(url, newRecipeData);
+  //   token: token,
+  //   userId: userId,
+  //   recipeTitle: newRecipeData.recipeTitle, 
+  //   recipeIngredients: newRecipeData.recipeIngredients,
+  //   recipeInstructions: newRecipeData.recipeInstructions
+  // }
+  //);
   return {
     type: SUBMIT_NEW_RECIPE,
     payload: request

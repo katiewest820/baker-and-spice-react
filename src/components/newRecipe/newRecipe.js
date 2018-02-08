@@ -20,13 +20,29 @@ class NewRecipe extends React.Component{
   }
 
   saveRecipeToDB(values){
-    let newRecipeValues = {
-      recipeTitle: values.recipeTitle,
-      recipeIngredients: this.props.recipeIngredientList,
-      recipeInstructions: values.recipeInstructions
-    }
-    this.props.submitNewRecipe(`${API_BASE_URL}/recipe/newRecipe`, newRecipeValues)
+
+    let data = new FormData();
+    let imagedata = document.querySelector('input[type="file"]').files[0];
+
+    data.append('recipeTitle', values.recipeTitle)
+    data.append('recipeIngredients', this.props.recipeIngredientList)
+    data.append ('recipeInstructions', values.recipeInstructions)
+    data.append('recipeImages', imagedata)
+    data.append('userId', localStorage.getItem('userId'))
+    data.append('authToken', localStorage.getItem('authToken'))
+
+    // let newRecipeValues = {
+    //   recipeTitle: values.recipeTitle,
+    //   recipeIngredients: this.props.recipeIngredientList,
+    //   recipeInstructions: values.recipeInstructions
+    // }
+    this.props.submitNewRecipe(`${API_BASE_URL}/recipe/newRecipe`, data)
   }
+
+  // handleChange(key, event){
+  //   this.setState({[key]: event.target.value})
+  // }
+
 
   render(){ 
     return(
@@ -46,7 +62,10 @@ class NewRecipe extends React.Component{
             </div>
             <div className="imgInputDiv">
               <label>Images</label>
-              <input name="file" type="file" />
+              <input 
+                name="file" 
+                type="file" 
+              />
             </div>
             
             <div>

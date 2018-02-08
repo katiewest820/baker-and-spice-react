@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {LOGIN, REGISTER, LOGOUT} from '../actions/authActions';
 import {saveAuthTokenAndUserId, clearLocalStorage} from '../local-storage';
 
@@ -20,6 +21,7 @@ export default(state=initialState, action) => {
       if(action.payload.request.response === 'username and password required'){
         return state = {...state, errorMsg: 'A username and password are requred to login', loginRedirect: false}
       }
+      //axios.defaults.headers.common['Authorization'] = action.payload.data.token;
       saveAuthTokenAndUserId(action.payload.data.token, action.payload.data.userId)
       return state = {...state, errorMsg: '', loginRedirect: true}
     case REGISTER:
