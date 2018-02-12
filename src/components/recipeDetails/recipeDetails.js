@@ -10,15 +10,11 @@ import {getOneRecipe} from '../../actions/recipeActions';
 import {missingPantryIngredients} from '../../actions/filterIngredientsActions';
 import './recipeDetails.css';
 import InStockValueDropDown from '../inStockValueDropDown/inStockValueDropDown';
-//let userId = localStorage.getItem('userId');
+
 
 export class RecipeDetails extends React.Component{
 
   componentDidMount(){
-    this.apiCallsForOneRecipeAndPantryItems()
-  }
-
-  apiCallsForOneRecipeAndPantryItems(){
     let recipeSlug = this.props.match.params.recipeSlug;
     let userId = localStorage.getItem('userId')
     Promise.all([
@@ -32,6 +28,8 @@ export class RecipeDetails extends React.Component{
   filterPantry(){
     let thisRecipeIngredientsDetails = this.props.oneRecipe.recipeIngredients;
     let currentPantryList = this.props.pantryItems;
+    console.log(this.props.oneRecipe)
+    console.log(currentPantryList)
     this.props.missingPantryIngredients(thisRecipeIngredientsDetails, currentPantryList);
   }
 
@@ -56,11 +54,17 @@ export class RecipeDetails extends React.Component{
     
   render(){
     let thisRecipeDetails = this.props.oneRecipe
-    //let currentPantryList = this.props.pantryItems
+    let recipeImage;
     let missing = this.props.missingIngredients
     let outOfStock = this.props.outOfStockIngredients
     let ingredients;
     let missingIngredients;
+    console.log(thisRecipeDetails)
+    if(thisRecipeDetails.recipeImages !== 'undefined'){
+      recipeImage = <img className="recipeImage" src={`//${window.location.hostname}:8080/images/${thisRecipeDetails.recipeImages}`} />
+    }else{
+      recipeImage = <img className="recipeImage" src={require('./defaultRecipeImage.png')}/>
+    }
     if(thisRecipeDetails.recipeIngredients){
       ingredients = thisRecipeDetails.recipeIngredients.map((item, index) => {
         if(outOfStock.find((name) => { return name === item.name})){
@@ -79,6 +83,8 @@ export class RecipeDetails extends React.Component{
           )
         }
       })  
+    } else{
+      return null
     }
     if(missing.length > 0){
       missingIngredients = missing.map((item, index) =>{
@@ -98,19 +104,22 @@ export class RecipeDetails extends React.Component{
         <div>
           <h2>{thisRecipeDetails.recipeTitle}</h2>
           <div>
-            <h3>Instructions</h3>
-            <p>{thisRecipeDetails.recipeInstructions}</p>
+            {recipeImage}
           </div>
           <div>  
             <h3>Ingredients</h3>
             {ingredients}
             <p>Pantry item is out of stock = <span className= "outOfStock">*</span> </p>
+          </div>
+          <div>
+            <h3>Instructions</h3>
+            <p>{thisRecipeDetails.recipeInstructions}</p>
           </div>  
           <div>
             <h2>The following recipe ingredients are missing from your pantry:</h2>
             {missingIngredients}
           </div>
-          <button>Edit</button>
+          <Link to={"/editRecipe/" + thisRecipeDetails.recipeSlug}><button>Edit</button></Link>
           <Link to={"/deleteMsg/" + thisRecipeDetails.recipeSlug}><button>Delete</button></Link>
         </div>
       </div>

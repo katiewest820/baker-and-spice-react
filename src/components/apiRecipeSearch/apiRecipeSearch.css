@@ -1,0 +1,41 @@
+.inspirationSearchDiv{
+  text-align: center;
+}
+
+.searchResultsImg{
+  height: 200px;
+}
+
+.image-gallery-image{
+  width: 400px;
+  margin:auto;
+  position: relative;
+}
+
+.image-gallery-image img{
+  display: block;
+  margin:auto;
+  height: 400px;
+  width: 400px;
+  margin: 50px 0px;
+  border: solid 3px black;
+}
+
+.image-gallery-description{
+  width: 100%;
+  bottom: 3px !important;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.image-gallery-slide-wrapper {
+  width: 60%;
+  margin: auto;
+}
+
+.image-gallery-thumbnails{
+  width: 85%;
+  margin:auto;
+}

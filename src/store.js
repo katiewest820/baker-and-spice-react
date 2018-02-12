@@ -6,6 +6,7 @@ import authReducers from './reducers/authReducers';
 import pantryReducers from './reducers/pantryReducers';
 import recipeReducers from './reducers/recipeReducers';
 import filterIngredientsReducers from './reducers/filterIngredientsReducers';
+import apiRecipeSearchReducers from './reducers/apiRecipeSearchReducers';
 
 const store = createStore(
   combineReducers({
@@ -13,7 +14,8 @@ const store = createStore(
     authReducers: authReducers,
     pantryReducers: pantryReducers,
     recipeReducers: recipeReducers,
-    filterIngredientsReducers: filterIngredientsReducers
+    filterIngredientsReducers: filterIngredientsReducers,
+    apiRecipeSearchReducers: apiRecipeSearchReducers
   }),
   applyMiddleware(thunk, promise)
 );

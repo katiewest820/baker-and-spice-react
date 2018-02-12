@@ -2,3 +2,10 @@
   color: red;
   font-weight: bold;
 }
+
+.recipeImage{
+  height: 400px;
+  border: solid 3px black;
+  display: block;
+  margin:auto;
+}

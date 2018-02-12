@@ -2,13 +2,17 @@ import React from 'react';
 import './ingredientInputs.css';
 import IngredientList from '../ingredientList/ingredientList';
 import {reduxForm, Field, reset} from 'redux-form';
-import {newRecipeIngredientList} from '../../actions/recipeActions';
+import {addIngredientToRecipe} from '../../actions/recipeActions';
 import {connect} from 'react-redux';
 
 export class IngredientInputs extends React.Component{
 
   saveNewIngredient(value){
-    this.props.dispatch(newRecipeIngredientList(value))
+    console.log(value)
+    let newItem = []
+    newItem.push(value)
+    console.log(newItem)
+    this.props.dispatch(addIngredientToRecipe(value))
     this.props.dispatch(reset('ingredientInputs'))
   }
   
@@ -19,7 +23,7 @@ export class IngredientInputs extends React.Component{
       console.log(this.props.recipeIngredientList)
        ingredients = this.props.recipeIngredientList.map((item, index) => {
         return(
-          <IngredientList key={index} index={index} name={item.name} quantity={item.quantity} updateIngredient={this.props.updateIngredient}/>
+          <IngredientList key={index} index={index} name={item.name} quantity={item.quantity} deleteIngredientFromRecipe={this.props.deleteIngredientFromRecipe} updateIngredient={this.props.updateIngredient}/>
         )
       })
     }

@@ -7,9 +7,10 @@ import Register from '../register/register';
 import Login from '../login/login';
 import Pantry from '../pantry/pantry';
 import NewRecipe from '../newRecipe/newRecipe';
-import RecipeInspiration from '../recipeInspiration/recipeInspiration';
+import APIRecipeSearch from '../apiRecipeSearch/apiRecipeSearch';
 import RecipeDetails from '../recipeDetails/recipeDetails';
 import DeleteMsg from '../deleteMsg/deleteMsg';
+import EditRecipe from '../editRecipe/editRecipe';
 
 export default class App extends React.Component {
   render() {
@@ -23,8 +24,9 @@ export default class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/pantry" component={Pantry} />
           <Route exact path="/newRecipe" component={NewRecipe} />
-          <Route exact path="/recipeInspiration" component={RecipeInspiration} />
+          <Route exact path="/apiRecipeSearch" component={APIRecipeSearch} />
           <Route exact path="/deleteMsg/:recipeSlug" component={DeleteMsg} />
+          <Route exact path="/editRecipe/:recipeSlug" component={EditRecipe} />
         </Switch>
       </div>
     );

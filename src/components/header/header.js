@@ -16,7 +16,7 @@ logUserOut(){
         <Link to="/home">Home</Link>
         <Link to="/newRecipe">New Recipe</Link>
         <Link to="/pantry">Pantry</Link>
-        <Link to="/recipeInspiration">Recipe Inspiration</Link>
+        <Link to="/apiRecipeSearch">Recipe Inspiration</Link>
         <Link to="/" onClick={this.logUserOut.bind(this)}>Log Out</Link>
       </header>
     )
