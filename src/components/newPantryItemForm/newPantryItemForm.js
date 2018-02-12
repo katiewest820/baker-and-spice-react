@@ -2,6 +2,7 @@ import React from 'react';
 import {reduxForm, Field, reset} from 'redux-form';
 import {submitNewPantryItem} from '../../actions/pantryActions';
 import {API_BASE_URL} from '../../config';
+import {required, renderField} from '../../validators';
 
 export class NewPantryItemForm extends React.Component{
 
@@ -18,11 +19,12 @@ export class NewPantryItemForm extends React.Component{
   render(){
     return(
       <form onSubmit={this.props.handleSubmit(values=> this.saveNewPantryItemToDB(values))}>
-        <label>Add Item</label>
         <Field 
           name="itemName"
-          component="input"
+          component={renderField}
+          label="Add Item"
           type="text"
+          validate={required}
         />
         <button type="submit">Submit</button>
       </form>

@@ -1,4 +1,4 @@
-import axios from 'axios';
+//import axios from 'axios';
 import {LOGIN, REGISTER, LOGOUT} from '../actions/authActions';
 import {saveAuthTokenAndUserId, clearLocalStorage} from '../local-storage';
 

@@ -4,6 +4,7 @@ import IngredientList from '../ingredientList/ingredientList';
 import {reduxForm, Field, reset} from 'redux-form';
 import {addIngredientToRecipe} from '../../actions/recipeActions';
 import {connect} from 'react-redux';
+import {required, renderField} from '../../validators';
 
 export class IngredientInputs extends React.Component{
 
@@ -30,20 +31,22 @@ export class IngredientInputs extends React.Component{
 
     return(
       <div className="ingredientInputDiv">
-        <label>Ingredients</label>
         {ingredients}
         <form onSubmit={this.props.handleSubmit(value => this.saveNewIngredient(value))}>
           <Field 
-           component="input"
-           placeholder="Ingredient" 
+           component={renderField}
+           placeholder="Item" 
            name="name" 
            type="text"
+           label="Ingredients"
+           validate={required}
           />
           <Field 
-           component="input"
+           component={renderField}
            placeholder="Quantity" 
            name="quantity" 
            type="text"
+           validate={required}
           />
           <button type="submit">Add</button>
         </form>

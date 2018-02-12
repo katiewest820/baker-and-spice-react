@@ -11,6 +11,8 @@ import APIRecipeSearch from '../apiRecipeSearch/apiRecipeSearch';
 import RecipeDetails from '../recipeDetails/recipeDetails';
 import DeleteMsg from '../deleteMsg/deleteMsg';
 import EditRecipe from '../editRecipe/editRecipe';
+import SearchMyRecipes from '../searchMyRecipes/searchMyRecipes';
+import APIRecipeSearchResults from '../apiRecipeSearchResults/apiRecipeSearchResults';
 
 export default class App extends React.Component {
   render() {
@@ -27,6 +29,8 @@ export default class App extends React.Component {
           <Route exact path="/apiRecipeSearch" component={APIRecipeSearch} />
           <Route exact path="/deleteMsg/:recipeSlug" component={DeleteMsg} />
           <Route exact path="/editRecipe/:recipeSlug" component={EditRecipe} />
+          <Route exact path="/search/:searchTerm" component={SearchMyRecipes} />
+          <Route exact path="/ideaSearch/:searchTerm" component={APIRecipeSearchResults} />
         </Switch>
       </div>
     );

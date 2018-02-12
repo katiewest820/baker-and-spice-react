@@ -3,7 +3,6 @@ import Header from '../header/header';
 import {connect} from 'react-redux';
 import {getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe} from '../../actions/recipeActions';
 import {API_BASE_URL} from '../../config';
-import store from '../../store';
 import {reduxForm, Field} from 'redux-form';
 import {Redirect} from 'react-router-dom';
 import IngredientList from '../ingredientList/ingredientList';
@@ -19,9 +18,7 @@ export class EditRecipe extends React.Component{
       this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${userId}/${recipeSlug}`)
       ]).then(() => {
         console.log(this.props.oneRecipe.recipeIngredients)
-        //for(let i = 0; i < this.props.oneRecipe.recipeIngredients.length; i++){
-          this.props.newRecipeIngredientList(this.props.oneRecipe.recipeIngredients)
-        //}
+        this.props.newRecipeIngredientList(this.props.oneRecipe.recipeIngredients)
       })
   }
 
@@ -133,8 +130,8 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps,
-  {getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe})
-(reduxForm({
-  form: 'editRecipe',
-  enableReinitialize: true 
-})(EditRecipe));
+{getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe})
+  (reduxForm({
+    form: 'editRecipe',
+    enableReinitialize: true 
+  })(EditRecipe));

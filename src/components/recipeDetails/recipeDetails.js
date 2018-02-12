@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from '../header/header';
-//import axios from 'axios';
 import {connect} from 'react-redux';
-//import store from '../../store';
 import {API_BASE_URL} from '../../config';
 import {Link} from 'react-router-dom';
 import {getPantryItems, submitNewPantryItem} from '../../actions/pantryActions';
@@ -61,9 +59,9 @@ export class RecipeDetails extends React.Component{
     let missingIngredients;
     console.log(thisRecipeDetails)
     if(thisRecipeDetails.recipeImages !== 'undefined'){
-      recipeImage = <img className="recipeImage" src={`//${window.location.hostname}:8080/images/${thisRecipeDetails.recipeImages}`} />
+      recipeImage = <img alt="" className="recipeImage" src={`//${window.location.hostname}:8080/images/${thisRecipeDetails.recipeImages}`} />
     }else{
-      recipeImage = <img className="recipeImage" src={require('./defaultRecipeImage.png')}/>
+      recipeImage = <img alt="" className="recipeImage" src={require('./defaultRecipeImage.png')}/>
     }
     if(thisRecipeDetails.recipeIngredients){
       ingredients = thisRecipeDetails.recipeIngredients.map((item, index) => {

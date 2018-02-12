@@ -50,7 +50,7 @@ export default(state=initialState, action) => {
     
     case GET_RECIPES_BY_SEARCH_TERM:
     console.log(action)
-      if(action.payload.data.data.length == 0){
+      if(action.payload.data.data.length === 0){
         return state = {
           ...state,
           errorMsg: 'No Results please try your search again'

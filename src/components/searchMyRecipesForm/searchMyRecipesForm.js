@@ -1,29 +1,32 @@
 import React from 'react';
 import {reduxForm, Field} from 'redux-form';
+//import {Link} from 'react-router-dom';
+import './searchMyRecipesForm.css';
+import {required, renderField} from '../../validators';
 
-export const required = value => value ? undefined : 'Required';
 export class SearchMyRecipesForm extends React.Component{
 
- 
-
+ grabSearchTerm(value){
+  console.log(value)
+  window.location.href = `/search/${value.myRecipeSearch}`;
+ }
 
   render(){
-    //TODO Required message for no input
     return(
-      <form className="searchMyRecipes" onSubmit={this.props.handleSubmit(value => this.props.onClick(value))}>    
-        <label>Search Your Recipes</label>
+      <form className="searchMyRecipes" onSubmit={this.props.handleSubmit(value => this.grabSearchTerm(value))}>    
         <Field 
           name="myRecipeSearch"
           type="text"
-          component="input"
-          validate={[required]}
+          component={renderField}
+          label="Search Your Recipes"
+          validate={required}
         />
-        <button type="submit">Search</button>
+        <button type="submit" disabled={this.props.submitting}>Search</button>
       </form>
     )
   }
 }
 
 export default reduxForm({
-  form: 'searchMyRecipes' 
+  form: 'searchMyRecipes'
 })(SearchMyRecipesForm);
