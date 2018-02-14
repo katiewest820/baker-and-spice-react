@@ -5,6 +5,7 @@ import store from '../../store';
 import {getAllRecipes, getOneRecipe, getRecipesBySearchTerm} from '../../actions/recipeActions';
 import SearchMyRecipesForm from '../searchMyRecipesForm/searchMyRecipesForm';
 import ImageGallery from 'react-image-gallery';
+import './myRecipes.css';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 
 export class MyRecipes extends React.Component{
@@ -51,8 +52,8 @@ export class MyRecipes extends React.Component{
         })
       }
       return(
-        <div>
-          <h1>My Recipes</h1>
+        <div className="myRecipesDiv">
+          <h1 className="myRecipesHeader">Your Recipes</h1>
           <ImageGallery items={recipe} renderItem={this.onRecipeClick.bind(this)} />
           <SearchMyRecipesForm onClick={value => this.callDBforRecipesThatMatchSearchTerm(value)}/>
         </div>

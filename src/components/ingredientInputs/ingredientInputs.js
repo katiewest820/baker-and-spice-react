@@ -31,14 +31,16 @@ export class IngredientInputs extends React.Component{
 
     return(
       <div className="ingredientInputDiv">
+        <label>Ingredients</label>
         {ingredients}
-        <form onSubmit={this.props.handleSubmit(value => this.saveNewIngredient(value))}>
+        <form className="newRecipeIngredient" onSubmit={this.props.handleSubmit(value => this.saveNewIngredient(value))}>
+          
           <Field 
            component={renderField}
            placeholder="Item" 
            name="name" 
            type="text"
-           label="Ingredients"
+           
            validate={required}
           />
           <Field 

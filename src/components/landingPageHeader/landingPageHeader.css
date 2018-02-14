@@ -5,10 +5,16 @@
 }
 
 .landingPageHeader a{
-  font-size: 15px;
+  font-size: 17px;
   padding-left: 12px;
   color:white;
   text-decoration: none;
+
+}
+
+.landingPageHeader a:hover{
+  color: #28b8be;
+  font-weight: bold;
 }
 
 @media (min-width: 640px){
@@ -18,7 +24,7 @@
 
   .landingPageHeader a{
     padding-left: 20px;
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 

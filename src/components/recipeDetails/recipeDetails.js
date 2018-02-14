@@ -68,15 +68,15 @@ export class RecipeDetails extends React.Component{
         if(outOfStock.find((name) => { return name === item.name})){
           return (
             <div key={index}>
+              <p className="bulletPoint">{item.quantity}</p>
               <p className="outOfStock">*{item.name}</p>
-              <p>{item.quantity}</p>
             </div>
           )
         }else{
           return (
             <div key={index}>
+              <p className="bulletPoint">{item.quantity}</p>
               <p className="inStock">{item.name}</p>
-              <p>{item.quantity}</p>
             </div>
           )
         }
@@ -94,31 +94,35 @@ export class RecipeDetails extends React.Component{
         )
       })
     }else{
-      missingIngredients = <p>Nothing! You are all set to begin baking!</p>
+      missingIngredients = <p>Nothing! You are all set to begin baking.</p>
     }
     return(
       <div>
         <Header />
-        <div>
-          <h2>{thisRecipeDetails.recipeTitle}</h2>
-          <div>
+        <div className="recipeDetailsMainDiv">
+          <div className="recipeImageDiv">
             {recipeImage}
+            <h2>{thisRecipeDetails.recipeTitle}</h2>
           </div>
-          <div>  
-            <h3>Ingredients</h3>
-            {ingredients}
-            <p>Pantry item is out of stock = <span className= "outOfStock">*</span> </p>
-          </div>
-          <div>
-            <h3>Instructions</h3>
-            <p>{thisRecipeDetails.recipeInstructions}</p>
+          <div className="recipeDetailsBackgroundDiv">
+            <div className="recipeIngredientsDiv"> 
+              <h3>Ingredients</h3>
+              <p className="outOfStockMsg">Pantry item is out of stock = <span className= "outOfStock">*</span></p>
+              {ingredients}
+            </div>
+            <div className="recipeInstructionsDiv">
+              <h3>Instructions</h3>
+              <p>{thisRecipeDetails.recipeInstructions}</p>
+            </div>
+            <div className="recipeDetailsDeleteEditBtns">
+              <Link to={"/editRecipe/" + thisRecipeDetails.recipeSlug}><button>Edit</button></Link>
+              <Link to={"/deleteMsg/" + thisRecipeDetails.recipeSlug}><button>Delete</button></Link>
+            </div>
           </div>  
-          <div>
-            <h2>The following recipe ingredients are missing from your pantry:</h2>
+          <div className="recipeMissingIngredientsDiv">
+            <h3>The following recipe ingredients are missing from your pantry:</h3>
             {missingIngredients}
           </div>
-          <Link to={"/editRecipe/" + thisRecipeDetails.recipeSlug}><button>Edit</button></Link>
-          <Link to={"/deleteMsg/" + thisRecipeDetails.recipeSlug}><button>Delete</button></Link>
         </div>
       </div>
     )

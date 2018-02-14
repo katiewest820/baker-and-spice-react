@@ -1,38 +1,44 @@
 .registerInputDiv{
-  padding: 30px;
+  width: 80%;
+  border: solid 2px black;
+  padding: 20px;
+  margin: auto;
+}  
+
+.registerInputDiv div{
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-gap: 10px;
-  margin:auto;
-  border: solid 3px black;
+  grid-template-rows: 1fr 1fr;
 }
 
 .registerInputDiv label{
-  justify-self: end;
+  font-size: 18px;
+  font-weight: bold;
+  color: #28b8be;
 }
 
-.registerInputDiv button{
+.registerInputDiv input{
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.registerInputDiv .formError{
   grid-column: span 2;
-  margin: auto;
-  width: 100px;
 }
 
-.registerErrorMsg{
-  color: red;
-  min-height: 20px;
-  min-width: 350px;
-  margin:auto;
-  margin-top: 20%;
-  text-align: center;
-}
-
-@media (min-width: 640px){
+@media (min-width: 900px){
 
   .registerInputDiv{
-    grid-template-columns: 1fr 4fr;
-    width: 50%;
+    width: 40%;
+    padding: 40px;
   }
-  .registerErrorMsg{
-    margin-top: 10%
+
+  .registerInputDiv div{
+    grid-template-columns: 1fr 3fr;
   }
+
+  .registerInputDiv label{
+    font-size: 20px;
+  }
+
 }

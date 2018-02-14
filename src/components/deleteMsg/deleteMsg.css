@@ -1,0 +1,38 @@
+.deleteMsg h1{
+  font-size: 30px;
+  width: 85%;
+  margin: auto;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.deleteMsgBtns{
+  margin: auto;
+  width: fit-content;
+  margin-top: 20px;
+}
+
+.deleteMsgBtns button{
+  margin: 5px;
+  padding: 10px 15px;
+  border: solid 2px black;
+  background-color: white;
+  font-weight: bold;
+}
+
+.deleteMsgBtns button:hover{
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+@media (min-width: 640px){
+  .deleteMsg{
+    width: 40%;
+    margin: auto;
+  }
+
+  .deleteMsg h1{
+    font-size: 35px;
+  }
+}

@@ -1,7 +1,20 @@
 .ingredientList{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 300px;
-  margin: auto;
+  text-align: center;
+}
 
+.ingredientList button{
+  border: none;
+  background: none;
+}
+
+.ingredientList button:hover{
+  color: #28b8be;
+  cursor: pointer;
+}
+
+.ingredientList input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 0px 20px;
+  margin: 10px 20px;
 }

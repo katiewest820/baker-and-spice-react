@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {register, login} from '../../actions/authActions';
 import {Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';
+import {required, renderField} from '../../validators';
 import './register.css';
 
 export class Register extends React.Component{
@@ -15,12 +16,11 @@ export class Register extends React.Component{
       userName: values.userName,
       password: values.password
     }
-    Promise.all([
+    //Promise.all([
     this.props.register(`${API_BASE_URL}/auth/register`, values)
-    ]).then(() => {
+    .then(() => {
       this.props.login(`${API_BASE_URL}/auth/login`, loginValues)
     });
-    //this.props.dispatch(reset('userRegister'))
   }
 
   render(){
@@ -33,29 +33,33 @@ export class Register extends React.Component{
       <LandingPageHeader /> 
         {registerErrorMsg}
         <form className="registerInputDiv" onSubmit={this.props.handleSubmit(values => this.sendUserRegistrationDataToDB(values))}>
-          <label>First Name</label>
           <Field 
+            label="First Name"
             type="text"
             name="firstName"
-            component="input"
+            component={renderField}
+            validate={required}
           />
-          <label>Last Name</label>
           <Field 
+            label="Last Name"
             type="text"
             name="lastName"
-            component="input"
+            component={renderField}
+            validate={required}
           />
-          <label>Username</label>
           <Field 
+            label="Username"
             type="text"
             name="userName"
-            component="input"
+            component={renderField}
+            validate={required}
           />
-          <label>Password</label>
           <Field 
+            label="Password"
             type="password"
             name="password"
-            component="input"
+            component={renderField}
+            validate={required}
           />
           <button type="submit">Submit</button>
           {this.props.loginRedirect && (<Redirect to="/home"/>)}

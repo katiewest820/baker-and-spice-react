@@ -1,14 +1,10 @@
 import React from 'react';
 import Header from '../header/header';
-//import axios from 'axios';
 import {API_BASE_URL} from '../../config';
-//import {reduxForm, Field, reset} from 'redux-form';
 import {connect} from 'react-redux';
 import {apiRecipeSearch} from '../../actions/apiRecipeSearchActions';
 import ImageGallery from 'react-image-gallery';
-//import {required, renderField} from '../../validators';
 import APIRecipeSearchForm from '../apiRecipeSearchForm/apiRecipeSearchForm';
-
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 
 

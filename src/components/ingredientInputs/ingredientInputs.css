@@ -1,0 +1,78 @@
+.ingredientInputDiv{
+    width: fit-content;
+    border: solid 1px black;
+    padding: 20px;
+    margin: 0% 10%;
+  }
+
+.ingredientInputDiv label, .imgInputDiv label{
+  font-size: 22px;
+  color: #28b8be;
+  font-weight: bold;
+}
+
+.newRecipeIngredient input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 0px 20px;
+  margin: 10px 20px 0px 20px;
+}
+
+.newRecipeIngredient button{
+  display: block;
+  margin:auto;
+  margin-top: 10px;
+  font-weight: bold;
+  background-color: white;
+  border: solid 2px black;
+  padding:5px 10px;
+}
+
+.newRecipeIngredient button:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.imgInputDiv{
+  width: 80%;
+  margin: auto;
+  padding: 20px 0px;
+}
+
+.imgInputDiv input{
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+@media (min-width: 640px){
+
+  .ingredientInputDiv{
+    margin: auto;
+    padding: 30px;
+  }
+
+  .newRecipeIngredient{
+    display: grid;
+    grid-template-columns: 3fr 3fr 40px;
+    width: fit-content;
+    margin: auto;
+  }
+
+  .newRecipeIngredient input{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 0px 20px;
+  }
+
+  .newRecipeIngredient button{
+      height: fit-content;
+      margin-top: 0px;
+  }
+
+  .imgInputDiv{
+    width: 550px;
+    
+  }
+  
+}

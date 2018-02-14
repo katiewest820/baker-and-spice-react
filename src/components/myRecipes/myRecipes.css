@@ -1,0 +1,81 @@
+.myRecipesDiv{
+  background-color: #e9ebee;
+  padding-bottom: 30px;
+}
+
+.myRecipesHeader{
+  text-align: center;
+  margin: 0;
+  padding-top: 35px;
+  font-size: 45px;
+  text-decoration: underline;
+  font-family: 'Sacramento', cursive;
+}
+
+.searchMyRecipes div{
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 3fr 1fr;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.searchMyRecipes input{
+  border: none;
+  border-bottom: 2px solid black;
+  background: none;
+}
+
+.searchMyRecipes label{
+  font-size: 20px;
+  font-weight: bold;
+  color: #28b8be;
+
+}
+
+.searchMyRecipes button{
+  display: block;
+  margin: auto;
+  background-color: white;
+  padding: 5px 10px;
+  border: solid 2px black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.searchMyRecipes button:hover{
+  background-color: black;
+  cursor: pointer;
+  color:white;
+}
+
+.searchMyRecipes .formError{
+  grid-column: span 2;
+}
+
+@media (min-width: 640px){
+
+  .myRecipesHeader{
+    font-size: 60px;
+    text-decoration: none;
+  }
+
+  .searchMyRecipes div{
+    width: 30%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    grid-template-rows: 3fr 20px;
+  }
+
+  .searchMyRecipes label{
+    font-size: 23px;
+  }
+
+  .searchMyRecipes button{
+    padding: 10px 20px;
+    font-size: 20px;
+    
+  }
+}

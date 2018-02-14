@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 import {editNewRecipeIngredientList, submitNewRecipe} from '../../actions/recipeActions';
 import store from '../../store';
 import {reduxForm, Field, reset} from 'redux-form';
-import {required, renderField} from '../../validators';
-//import './newRecipe.css';
+import {required, renderField, renderTextAreaField} from '../../validators';
+import './newRecipe.css';
 
 class NewRecipe extends React.Component{
 
@@ -20,6 +20,7 @@ class NewRecipe extends React.Component{
   }
 
   deleteIngredientFromRecipe(value, name, index){
+    console.log(value)
     let currentState = this.props.recipeIngredientList.slice();
     currentState.splice([index], 1)
     this.props.editNewRecipeIngredientList(currentState)
@@ -41,11 +42,11 @@ class NewRecipe extends React.Component{
     return(
       <div>
         <Header />
+        <h2 className="newRecipeHeader">Create Your Recipe</h2>
         <div className="newRecipeDiv">
-          <h2>Create Your Recipe</h2>
           <IngredientInputs deleteIngredientFromRecipe={this.deleteIngredientFromRecipe.bind(this)} updateIngredient={this.updateIngredient.bind(this)}/>
           <form onSubmit={this.props.handleSubmit(values => this.saveRecipeToDB(values))}>
-            <div>
+            <div className="recipeTitle">
               <Field 
                 component={renderField} 
                 name="recipeTitle" 
@@ -55,24 +56,24 @@ class NewRecipe extends React.Component{
               />
             </div>
             <div className="imgInputDiv">
-              <label>Images</label>
+              <label for="fileUpload" className="customFileUpload">Images</label>
               <input 
+                id="fileUpload"
                 name="file" 
                 type="file" 
               />
             </div>
             
-            <div>
+            <div className="newRecipeInstructions">
               <Field
                 type="textarea"
                 name="recipeInstructions"
-                component={renderField}
+                component={renderTextAreaField}
                 label="Instructions"
                 validate={required}
-                className="instructionsInput" 
               />
             </div> 
-            <button type="submit">Submit Recipe</button>
+            <button className="submitNewRecipeButton" type="submit">Submit Recipe</button>
             { this.props.recipeSlug && (
               <Redirect to={"/recipeDetails/" + this.props.recipeSlug} />
             )}

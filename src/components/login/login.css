@@ -1,31 +1,62 @@
+.loginErrorMsg{
+  margin-top: 20%;
+  margin-bottom: 5px;
+  text-align: center;
+  color: red;
+}
+
 .loginDiv{
+  width: 85%;
+  margin: auto;
+  border: solid 3px black;
+  padding: 20px;
+}
+
+.loginDiv div{
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-gap: 5px;
-  padding: 20px;
-  margin: 0% 3%;
-  border: solid 3px black;
+  grid-template-rows: 1fr 1fr;
 }
 
-.loginErrorMsg{
-  color: red;
-  min-height: 20px;
-  min-width: 350px;
-  margin:auto;
-  margin-top: 20%;
-  text-align: center;
+.loginDiv .formError{
+  grid-column: span 2;
 }
 
-@media (min-width: 640px){
+.loginDiv input{
+  border: none;
+  border-bottom: 1px solid black;
+}
 
-  .loginDiv{
-    width: 40%;
-    grid-template-columns: 1fr 3fr;
-    padding: 30px;
-    margin:auto;
-  }
+.loginDiv label{
+  font-size: 18px;
+  font-weight: bold;
+  color: #28b8be;
+}
 
+.loginDiv button{
+  display: block;
+  margin: auto;
+  padding: 10px 15px;
+  background-color: white;
+  border: solid 2px black;
+}
+
+@media (min-width: 750px){
+  
   .loginErrorMsg{
     margin-top: 10%;
+  }
+
+  .loginDiv{
+    width: 45%;
+    padding: 40px;
+  }
+
+  .loginDiv div{
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .loginDiv label{
+    font-size: 20px; 
   }
 }

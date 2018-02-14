@@ -1,0 +1,9 @@
+main{
+  width: fit-content;
+}
+
+@media (min-width: 1300px){
+  main{
+    width: 100%;
+  }
+}

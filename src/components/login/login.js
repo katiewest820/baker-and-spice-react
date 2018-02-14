@@ -5,6 +5,8 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login} from '../../actions/authActions';
 import {API_BASE_URL} from '../../config';
+import {required, renderField} from '../../validators';
+
 import './login.css';
 
 export class Login extends React.Component{
@@ -27,16 +29,18 @@ export class Login extends React.Component{
         {loginErrorMsg}
         
         <form className="loginDiv" onSubmit={this.props.handleSubmit(values => this.grabLoginValuesAndMakeAPICall(values))}>
-          <label>User Name</label>
           <Field
+            label="Username"
             type="text" 
-            component="input"
+            component={renderField}
+            validate={required}
             name="userName"
           />
-          <label>password</label>
           <Field 
+            label="Password"
             type="password"
-            component="input"
+            component={renderField}
+            validate={required}
             name="password"
           />
           <button type="submit">Submit</button>

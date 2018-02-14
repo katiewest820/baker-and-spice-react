@@ -1,11 +1,213 @@
+.recipeDetailsMainDiv{
+  background-color: #e9ebee;
+  padding-bottom: 30px;
+  padding-top: 140px;
+  position: relative;
+}
+
 .outOfStock{
   color: red;
   font-weight: bold;
 }
 
+.outOfStockMsg{
+  font-size: 12px;
+  text-align: justify;
+}
+
+.recipeImageDiv{
+  position: absolute;
+  width: 100%;
+  top: 0%;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.recipeImageDiv h2{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-family: 'Sacramento', cursive;
+  letter-spacing: 2px;
+  font-size: 40px;
+  top: 80%;
+}
+
 .recipeImage{
-  height: 400px;
-  border: solid 3px black;
+  width: 200px;
   display: block;
   margin:auto;
+  border-radius: 100%;
+}
+
+.recipeDetailsBackgroundDiv{
+  background: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 85%;
+  margin: auto;
+  margin-top: 20px;
+  padding-top: 130px;
+  border-radius: 10px;
+}
+
+.recipeIngredientsDiv, .recipeInstructionsDiv{
+  margin: auto;
+  padding: 35px;
+  text-align: center;
+  padding-top: 0px;
+}
+
+.recipeIngredientsDiv h3, .recipeInstructionsDiv h3{
+  font-size: 20px;
+  font-weight: bold;
+  color: #28b8be;
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey;
+  margin:auto;
+}
+
+.recipeIngredientsDiv div{
+  padding: 10px;
+  min-width: 200px;
+  max-width: fit-content;
+  margin: auto;
+}
+
+.recipeIngredientsDiv div p{
+  display: inline;
+  padding: 5px;
+}
+
+.bulletPoint:before {
+  content:"•";
+  margin: 10px;
+}
+
+.recipeMissingIngredientsDiv{
+  width: 80%;
+  margin: auto;
+}
+
+.recipeMissingIngredientsDiv div{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.recipeMissingIngredientsDiv form{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  justify-self: start;
+}
+
+.recipeMissingIngredientsDiv p{
+  font-size: 18px;
+  justify-self: end;
+  padding-right: 10px;
+}
+
+.recipeMissingIngredientsDiv select{
+  height: 42px;
+}
+
+.recipeMissingIngredientsDiv option{
+  background-color: black;
+  color: white;
+}
+
+.recipeMissingIngredientsDiv button{
+  width: 85px;
+  padding: 4px;
+  margin: auto;
+  background-color: white;
+  border: solid 2px black;
+  font-weight: bold;
+}
+
+.recipeMissingIngredientsDiv button:hover{
+  background-color: black;
+  cursor: pointer;
+  color:white;
+}
+
+.recipeMissingIngredientsDiv h3{
+  font-size: 20px;
+
+}
+
+.recipeDetailsDeleteEditBtns{
+  padding: 10px;
+}
+
+.recipeDetailsDeleteEditBtns a{
+  margin: 5px;
+}
+
+.recipeDetailsDeleteEditBtns button{
+  padding: 5px 10px;
+  background-color: white;
+  font-weight: bold;
+  border: 2px solid black;
+}
+
+.recipeDetailsDeleteEditBtns button:hover{
+  background-color: black;
+  color:white;
+  cursor: pointer;
+}
+
+@media (min-width: 800px){
+
+  .recipeImage{
+    width: 300px;
+  }
+
+  .recipeImageDiv h2{
+    font-size: 50px;
+    top: 85%;
+  }
+
+  .recipeDetailsBackgroundDiv{
+    width: 65%;
+    margin-top: 30px;
+    border-bottom: 3px solid black;
+    padding-top: 210px;
+  }
+
+  .recipeIngredientsDiv, .recipeInstructionsDiv{
+    width: 65%;
+  }
+
+  .recipeIngredientsDiv{
+    padding: 35px;
+  }
+
+  .recipeIngredientsDiv h3, .recipeInstructionsDiv h3{
+    font-size: 25px;
+    text-align: justify;
+  }
+
+  .recipeMissingIngredientsDiv{
+    width: 65%;
+  }
+
+  .recipeMissingIngredientsDiv div{
+    width: fit-content;
+    grid-gap: 10px;
+  }
+
+  /*.recipeMissingIngredientsDiv div{
+    grid-template-columns: 1fr 1fr;
+    width: fit-content;
+    grid-gap: 10px;
+  }*/
+
+  .recipeMissingIngredientsDiv h3{
+    font-size: 23px;
+  }
+
+
 }

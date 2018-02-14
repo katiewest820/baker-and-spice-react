@@ -8,6 +8,10 @@ const initialState = {
 }
 
 export default(state=initialState, action) => {
+  if(action.error){
+    console.log(action.error)
+    return state;
+  }
   switch(action.type){
     case LOGIN:
     console.log(state)
@@ -27,6 +31,7 @@ export default(state=initialState, action) => {
     case REGISTER:
     console.log(state)
     console.log(action)
+    debugger
       if(action.payload.request.response === 'An account already exists with this username'){
         return state = {...state, errorMsg: 'Username already in use, please try again', loginRedirect: false}
       }

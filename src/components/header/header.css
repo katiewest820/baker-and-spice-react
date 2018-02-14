@@ -5,10 +5,14 @@
 }
 
 .mainHeader a{
-  font-size: 12px;
+  font-size: 15px;
   padding-left: 10px;
   color:white;
   text-decoration: none;
+}
+
+.mainHeader a:hover{
+  color: darkGrey
 }
 
 @media (min-width: 640px){

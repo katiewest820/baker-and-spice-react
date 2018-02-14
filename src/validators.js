@@ -8,12 +8,29 @@ export const renderField = ({
   placeholder,
   meta: {touched, error, warning }
 }) => (
-  <div>
+  
     <div>
       <label>{label}</label>
-      <input {...input} type={type} placeholder={placeholder}/>
+      <input {...input} type={type} placeholder={placeholder} autoComplete="off"/>
       {touched &&
         ((error && <span className="formError">{error}</span>))}
     </div>
-  </div>
+  
+)
+
+export const renderTextAreaField = ({
+  input,
+  label,
+  type,
+  placeholder,
+  meta: {touched, error, warning }
+}) => (
+  
+    <div>
+      <label>{label}</label>
+      <textarea {...input} type={type} placeholder={placeholder} autoComplete="off"/>
+      {touched &&
+        ((error && <span className="formError">{error}</span>))}
+    </div>
+  
 )

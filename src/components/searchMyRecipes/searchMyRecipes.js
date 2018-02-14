@@ -6,6 +6,7 @@ import {API_BASE_URL} from '../../config';
 import {reset} from 'redux-form';
 import Header from '../header/header';
 import SearchMyRecipesForm from '../searchMyRecipesForm/searchMyRecipesForm';
+import './searchMyRecipes.css';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 
 export class SearchMyRecipes extends React.Component{
@@ -48,12 +49,12 @@ export class SearchMyRecipes extends React.Component{
     console.log(this.props.searchResults)
     if(this.props.errorMsg.length > 0){
       console.log(this.props.errorMsg)
-      errorMsg = <h2>{this.props.errorMsg}</h2>
+      errorMsg = <h2 className="searchMyRecipesErrorMessage">{this.props.errorMsg}</h2>
       return(
         <main>
           <Header />
           <div>
-            <h1>My Recipes</h1>
+            <h1 className="myRecipesHeader">Your Recipes</h1>
             {errorMsg}
             <SearchMyRecipesForm onClick={value => this.callDBforRecipesThatMatchSearchTerm(value)}/>
           </div>
@@ -77,7 +78,7 @@ export class SearchMyRecipes extends React.Component{
         <main>
           <Header />
           <div>
-            <h1>My Recipes</h1>
+            <h1 className="myRecipesHeader">Your Recipes</h1>
             {errorMsg}
             <ImageGallery items={searchRecipe} renderItem={this.onSearchedRecipeClick.bind(this)} />
             <SearchMyRecipesForm onClick={value => this.callDBforRecipesThatMatchSearchTerm(value)}/>
