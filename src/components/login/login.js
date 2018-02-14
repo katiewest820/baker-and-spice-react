@@ -3,13 +3,17 @@ import LandingPageHeader from '../landingPageHeader/landingPageHeader';
 import {reduxForm, Field, reset} from 'redux-form';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {login} from '../../actions/authActions';
+import {login, logout} from '../../actions/authActions';
 import {API_BASE_URL} from '../../config';
 import {required, renderField} from '../../validators';
 
 import './login.css';
 
 export class Login extends React.Component{
+
+  componentDidMount(){
+    this.props.logout()
+  }
 
   grabLoginValuesAndMakeAPICall(values){
     console.log(values)
@@ -59,7 +63,7 @@ const mapStateToProps = state => ({
   loginRedirect: state.authReducers.loginRedirect
 })
 
-Login = connect(mapStateToProps, {login})(Login)
+Login = connect(mapStateToProps, {login, logout})(Login)
 
 export default reduxForm({
   form: 'userLogin' 

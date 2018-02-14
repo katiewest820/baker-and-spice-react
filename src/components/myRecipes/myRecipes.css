@@ -1,3 +1,13 @@
+.noRecipesYet{
+  text-align: center;
+  margin-top: 20%;
+}
+
+.noRecipesYet a{
+  color: #28b8be;
+  text-decoration: none;
+}
+
 .myRecipesDiv{
   background-color: #e9ebee;
   padding-bottom: 30px;
@@ -56,6 +66,10 @@
 }
 
 @media (min-width: 640px){
+
+  .noRecipesYet{
+    margin-top: 10%;
+  }
 
   .myRecipesHeader{
     font-size: 60px;

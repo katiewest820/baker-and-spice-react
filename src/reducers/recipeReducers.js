@@ -1,5 +1,3 @@
-//import axios from 'axios';
-//import {API_BASE_URL} from '../config';
 import {GET_ONE_RECIPE, 
         GET_ALL_RECIPES,
         GET_RECIPES_BY_SEARCH_TERM,
@@ -33,7 +31,6 @@ export default(state=initialState, action) => {
         errorMsg: '',  
         recipeSlug: ''
       }; 
-    
     case GET_ALL_RECIPES:
       console.log(action)
       return state = {

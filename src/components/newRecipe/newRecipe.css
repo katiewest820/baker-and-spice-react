@@ -73,8 +73,8 @@
 @media  (min-width: 640px){
 
   .newRecipeHeader{
-    width: 35%;
-    font-size: 55px;
+    width: 50%;
+    font-size: 50px;
   }
 
   .recipeTitle{

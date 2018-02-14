@@ -5,6 +5,7 @@ import store from '../../store';
 import {getAllRecipes, getOneRecipe, getRecipesBySearchTerm} from '../../actions/recipeActions';
 import SearchMyRecipesForm from '../searchMyRecipesForm/searchMyRecipesForm';
 import ImageGallery from 'react-image-gallery';
+import {Link} from 'react-router-dom';
 import './myRecipes.css';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 
@@ -59,7 +60,12 @@ export class MyRecipes extends React.Component{
         </div>
       )
     }
-    return(null)
+    //displays if no recipes created yet
+    else{
+      return(
+        <h2 className="noRecipesYet">Your recipes will display here. <br/>To begin building your first recipe click on <Link to="/newRecipe">New Recipe</Link></h2>
+      )
+    }
   }
 }
 

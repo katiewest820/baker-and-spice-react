@@ -6,12 +6,11 @@ export class AddIngredientToRecipe extends React.Component{
 
   render(){
     return(
-      <form onSubmit={this.props.handleSubmit(values => this.props.onClick(values))}>
+      <form className="newRecipeIngredient" onSubmit={this.props.handleSubmit(values => this.props.onClick(values))}>
         <Field
           type="text"
           name="name"
           placeholder="Item"
-          label="Add Additional Ingredients"
           component={renderField} 
           validate={required}
         />

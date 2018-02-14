@@ -12,7 +12,7 @@
 }
 
 .registerInputDiv label{
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #28b8be;
 }
@@ -22,15 +22,39 @@
   border-bottom: 1px solid black;
 }
 
+.registerInputDiv button{
+  display: block;
+  margin: auto;
+  padding: 5px 10px;
+  background-color: white;
+  border: solid 2px black;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.registerInputDiv button:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
 .registerInputDiv .formError{
   grid-column: span 2;
+}
+
+.registerErrorMsg{
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 5px;
+  color: red;
+  height: 22px;
 }
 
 @media (min-width: 900px){
 
   .registerInputDiv{
     width: 40%;
-    padding: 40px;
+    padding: 30px;
   }
 
   .registerInputDiv div{
@@ -39,6 +63,14 @@
 
   .registerInputDiv label{
     font-size: 20px;
+  }
+
+  .registerInputDiv button{
+    padding: 10px 15px;
+  }
+
+  .registerErrorMsg{
+    margin-top: 8%;
   }
 
 }

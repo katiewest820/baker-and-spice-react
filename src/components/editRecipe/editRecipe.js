@@ -3,10 +3,11 @@ import Header from '../header/header';
 import {connect} from 'react-redux';
 import {getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe} from '../../actions/recipeActions';
 import {API_BASE_URL} from '../../config';
-import {reduxForm, Field} from 'redux-form';
+import {reduxForm, Field, reset} from 'redux-form';
 import {Redirect} from 'react-router-dom';
 import IngredientList from '../ingredientList/ingredientList';
 import AddIngredientToRecipe from '../addIngredientToRecipe/addIngredientToRecipe';
+import {required, renderField, renderTextAreaField} from '../../validators';
 import './editRecipe.css';
 
 export class EditRecipe extends React.Component{
@@ -73,7 +74,7 @@ export class EditRecipe extends React.Component{
     console.log(currentRecipes)
     console.log(newArr)
     this.props.newRecipeIngredientList(newArr)
-
+    this.props.dispatch(reset('addIngredientToRecipe'))
   }
 
   render(){
@@ -88,35 +89,46 @@ export class EditRecipe extends React.Component{
     return(
       <div>
         <Header />
-        <div className="editRecipeIngredients">
-          <label>Update Ingredients</label>
-          {recipeIngredients}
-          <AddIngredientToRecipe onClick={this.addIngredientToRecipe.bind(this)}/>
+          <h2 className="newRecipeHeader">Update Recipe</h2>
+          <div className="newRecipeDiv">
+          <div className="ingredientInputDiv">
+            <label>Update Ingredients</label>
+            {recipeIngredients}
+            <AddIngredientToRecipe onClick={this.addIngredientToRecipe.bind(this)}/>
+          </div>
+          <form onSubmit={this.props.handleSubmit(values => this.sendUpdatedRecipeToDB(values))}>
+            <div className="recipeTitle">
+              <Field 
+                label="Update Title"
+                type="text"
+                name="recipeTitle"
+                validate={required}
+                component={renderField}
+              /> 
+            </div>
+            <div className="imgInputDiv">
+              <label for="fileUpload" className="customFileUpload">Update Images</label>
+              <input 
+                id="fileUpload"
+                name="file" 
+                type="file" 
+              />
+            </div>
+            <div className="newRecipeInstructions"> 
+              <Field 
+                label="Update Instructions"
+                type="text"
+                name="recipeInstructions"
+                validate={required}
+                component={renderTextAreaField}
+              />
+            </div>
+            <button className="submitNewRecipeButton" type="submit">Submit Changes</button> 
+            { this.props.recipeSlug && (
+                <Redirect to={"/recipeDetails/" + this.props.recipeSlug} />
+              )}
+          </form>
         </div>
-        <form className="editRecipeForm" onSubmit={this.props.handleSubmit(values => this.sendUpdatedRecipeToDB(values))}>
-          <label>Update Recipe Title</label>
-          <Field 
-            type="text"
-            name="recipeTitle"
-            component="input"
-          /> 
-          <label>Images</label>
-          <input 
-            name="file" 
-            type="file" 
-          />
-          <label>Update Recipe Instructions</label>  
-          <Field 
-            type="text"
-            name="recipeInstructions"
-            component="input"
-          />
-          <button type="submit">Submit Changes</button> 
-          { this.props.recipeSlug && (
-              <Redirect to={"/recipeDetails/" + this.props.recipeSlug} />
-            )}
-        </form>
-
       </div>
     )
   }

@@ -12,7 +12,8 @@
 }
 
 .mainHeader a:hover{
-  color: darkGrey
+  color: #28b8be;
+  font-weight: bold;
 }
 
 @media (min-width: 640px){

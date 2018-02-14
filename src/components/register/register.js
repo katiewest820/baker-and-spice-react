@@ -2,13 +2,17 @@ import React from 'react';
 import LandingPageHeader from '../landingPageHeader/landingPageHeader';
 import {reduxForm, Field} from 'redux-form';
 import {connect} from 'react-redux';
-import {register, login} from '../../actions/authActions';
+import {register, login, logout} from '../../actions/authActions';
 import {Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';
 import {required, renderField} from '../../validators';
 import './register.css';
 
 export class Register extends React.Component{
+
+  componentDidMount(){
+    this.props.logout()
+  }
 
   sendUserRegistrationDataToDB(values){
     console.log(values)
@@ -19,7 +23,10 @@ export class Register extends React.Component{
     //Promise.all([
     this.props.register(`${API_BASE_URL}/auth/register`, values)
     .then(() => {
-      this.props.login(`${API_BASE_URL}/auth/login`, loginValues)
+      if(this.props.errorMessage == ''){
+        console.log(loginValues)
+        this.props.login(`${API_BASE_URL}/auth/login`, loginValues)
+      }
     });
   }
 
@@ -74,7 +81,7 @@ const mapStateToProps = state => ({
   loginRedirect: state.authReducers.loginRedirect
 });
 
-Register = connect(mapStateToProps, {register, login})(Register)
+Register = connect(mapStateToProps, {register, login, logout})(Register)
 
 export default reduxForm({
   form: 'userRegister' 
