@@ -9,38 +9,31 @@ import {required, renderField} from '../../validators';
 export class IngredientInputs extends React.Component{
 
   saveNewIngredient(value){
-    console.log(value)
-    let newItem = []
-    newItem.push(value)
-    console.log(newItem)
-    this.props.dispatch(addIngredientToRecipe(value))
-    this.props.dispatch(reset('ingredientInputs'))
+    let newItem = [];
+    newItem.push(value);
+    this.props.dispatch(addIngredientToRecipe(value));
+    this.props.dispatch(reset('ingredientInputs'));
   }
   
   render(){
-    console.log(this.props.recipeIngredientList)
     let ingredients;
     if(this.props.recipeIngredientList.length > 0){
-      console.log(this.props.recipeIngredientList)
-       ingredients = this.props.recipeIngredientList.map((item, index) => {
+      ingredients = this.props.recipeIngredientList.map((item, index) => {
         return(
           <IngredientList key={index} index={index} name={item.name} quantity={item.quantity} deleteIngredientFromRecipe={this.props.deleteIngredientFromRecipe} updateIngredient={this.props.updateIngredient}/>
         )
-      })
-    }
-
+      });
+    };
     return(
       <div className="ingredientInputDiv">
         <label>Ingredients</label>
         {ingredients}
         <form className="newRecipeIngredient" onSubmit={this.props.handleSubmit(value => this.saveNewIngredient(value))}>
-          
           <Field 
            component={renderField}
            placeholder="Item" 
            name="name" 
            type="text"
-           
            validate={required}
           />
           <Field 
@@ -54,14 +47,14 @@ export class IngredientInputs extends React.Component{
         </form>
       </div>
     )
-  }
-}
+  };
+};
 
 const mapStateToProps = state => ({
   recipeIngredientList: state.recipeReducers.newRecipeIngredientList 
-})
+});
 
-IngredientInputs = connect(mapStateToProps)(IngredientInputs)
+IngredientInputs = connect(mapStateToProps)(IngredientInputs);
 
 export default reduxForm({
   form: 'ingredientInputs' 

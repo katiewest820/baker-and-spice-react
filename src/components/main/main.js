@@ -11,5 +11,5 @@ export default class Main extends React.Component{
         <MyRecipes />
       </main>
     )
-  }
-}
+  };
+};

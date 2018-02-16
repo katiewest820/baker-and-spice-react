@@ -8,15 +8,13 @@ export const renderField = ({
   placeholder,
   meta: {touched, error, warning }
 }) => (
-  
     <div>
       <label>{label}</label>
       <input {...input} type={type} placeholder={placeholder} autoComplete="off"/>
       {touched &&
         ((error && <span className="formError">{error}</span>))}
-    </div>
-  
-)
+    </div> 
+  )
 
 export const renderTextAreaField = ({
   input,
@@ -31,6 +29,5 @@ export const renderTextAreaField = ({
       <textarea {...input} type={type} placeholder={placeholder} autoComplete="off"/>
       {touched &&
         ((error && <span className="formError">{error}</span>))}
-    </div>
-  
-)
+    </div> 
+  )

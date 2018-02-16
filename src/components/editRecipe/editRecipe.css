@@ -1,3 +1,8 @@
+/*.newRecipeDiv .recipeReducerErrorMsg{
+  padding-top: 0;
+  color: red;
+}*/
+
 .editRecipeForm{
   display: grid;
   width: 55%;
@@ -7,7 +12,6 @@
 }
 
 .editRecipeIngredients{
- 
   margin: auto;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -15,4 +19,8 @@
 
 .editRecipeIngredients form{
   grid-column: span 2;
+}
+
+.recipeTitle input, .ingredientList input{
+  text-transform: capitalize;
 }

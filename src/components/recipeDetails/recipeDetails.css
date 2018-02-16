@@ -31,10 +31,13 @@
   letter-spacing: 2px;
   font-size: 40px;
   top: 80%;
+  padding: 10px;
+  text-transform: capitalize;
 }
 
 .recipeImage{
   width: 200px;
+  height: 200px;
   display: block;
   margin:auto;
   border-radius: 100%;
@@ -67,6 +70,10 @@
   margin:auto;
 }
 
+.recipeInstructionsDiv p{
+  white-space: pre-line;
+}
+
 .recipeIngredientsDiv div{
   padding: 10px;
   min-width: 200px;
@@ -77,12 +84,15 @@
 .recipeIngredientsDiv div p{
   display: inline;
   padding: 5px;
+  text-transform: capitalize;
 }
 
-.bulletPoint:before {
+.outOfStock:before, .inStock:before {
   content:"•";
   margin: 10px;
 }
+
+
 
 .recipeMissingIngredientsDiv{
   width: 80%;
@@ -135,7 +145,6 @@
 
 .recipeMissingIngredientsDiv h3{
   font-size: 20px;
-
 }
 
 .recipeDetailsDeleteEditBtns{
@@ -159,10 +168,15 @@
   cursor: pointer;
 }
 
+.missingItem{
+  text-transform: capitalize;
+}
+
 @media (min-width: 800px){
 
   .recipeImage{
     width: 300px;
+    height: 300px;
   }
 
   .recipeImageDiv h2{
@@ -199,15 +213,8 @@
     grid-gap: 10px;
   }
 
-  /*.recipeMissingIngredientsDiv div{
-    grid-template-columns: 1fr 1fr;
-    width: fit-content;
-    grid-gap: 10px;
-  }*/
-
   .recipeMissingIngredientsDiv h3{
     font-size: 23px;
   }
-
 
 }

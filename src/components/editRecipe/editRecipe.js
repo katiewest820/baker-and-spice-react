@@ -14,83 +14,67 @@ export class EditRecipe extends React.Component{
 
   componentDidMount(){
     let recipeSlug = this.props.match.params.recipeSlug;
-    let userId = localStorage.getItem('userId')
+    let userId = localStorage.getItem('userId');
     Promise.all([
       this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${userId}/${recipeSlug}`)
-      ]).then(() => {
-        console.log(this.props.oneRecipe.recipeIngredients)
-        this.props.newRecipeIngredientList(this.props.oneRecipe.recipeIngredients)
-      })
-  }
+      ]).then((response) => {
+        console.log(response)
+        if(!response.error){
+          this.props.newRecipeIngredientList(this.props.oneRecipe.recipeIngredients);
+        };
+      });
+  };
 
   sendUpdatedRecipeToDB(values){
-    console.log(values)
-    console.log(this.props.recipeIngredientList)
     let recipeSlug = values.recipeTitle.trim().toLowerCase().split(' ').join('-');
     let id = values._id;
-    console.log(recipeSlug)
     let data = new FormData();
     let imagedata = document.querySelector('input[type="file"]').files[0];
     if(imagedata){
-      data.append('recipeImages', imagedata)
+      data.append('recipeImages', imagedata);
     }
-    console.log(imagedata)
-    data.append('recipeTitle', values.recipeTitle.trim().toLowerCase())
-    data.append('recipeIngredients', JSON.stringify(this.props.recipeIngredientList))
-    data.append ('recipeInstructions', values.recipeInstructions)
-    data.append('recipeSlug', recipeSlug)
-    this.props.editRecipe(`${API_BASE_URL}/recipe/editRecipe/${id}`, data)
-  }
+    data.append('recipeTitle', values.recipeTitle.trim().toLowerCase());
+    data.append('recipeIngredients', JSON.stringify(this.props.recipeIngredientList));
+    data.append ('recipeInstructions', values.recipeInstructions);
+    data.append('recipeSlug', recipeSlug);
+    this.props.editRecipe(`${API_BASE_URL}/recipe/editRecipe/${id}`, data);
+  };
 
   updateIngredient(value, name, index){
-    console.log(value)
-    console.log(name)
-    console.log(index)
     let currentState = this.props.recipeIngredientList.slice();
-    console.log(currentState)
-    currentState[index] = Object.assign({}, currentState[index])
+    currentState[index] = Object.assign({}, currentState[index]);
     currentState[index][name] = value;
-    console.log(currentState)
-    this.props.editNewRecipeIngredientList(currentState)
-  }
+    this.props.editNewRecipeIngredientList(currentState);
+  };
 
   deleteIngredientFromRecipe(value, name, index){
-    console.log(value)
-    console.log(name)
-    console.log(index)
     let currentState = this.props.recipeIngredientList.slice();
-    console.log(currentState)
-    currentState.splice([index], 1)
-    console.log(currentState)
-    this.props.editNewRecipeIngredientList(currentState)
-  }
+    currentState.splice([index], 1);
+    this.props.editNewRecipeIngredientList(currentState);
+  };
 
   addIngredientToRecipe(values){
-    console.log(values)
-    let currentRecipes = this.props.recipeIngredientList
-    console.log(currentRecipes)
+    let currentRecipes = this.props.recipeIngredientList;
     let newArr = currentRecipes.slice();
     newArr.push(values);
-    console.log(currentRecipes)
-    console.log(newArr)
-    this.props.newRecipeIngredientList(newArr)
-    this.props.dispatch(reset('addIngredientToRecipe'))
-  }
+    this.props.newRecipeIngredientList(newArr);
+    this.props.dispatch(reset('addIngredientToRecipe'));
+  };
 
   render(){
-    let recipeIngredients
+    let recipeIngredients;
     if(this.props.recipeIngredientList){
       recipeIngredients = this.props.recipeIngredientList.map((item, index) => {
         return (
           <IngredientList key={index} index={index} name={item.name} quantity={item.quantity} updateIngredient={this.updateIngredient.bind(this)} deleteIngredientFromRecipe={this.deleteIngredientFromRecipe.bind(this)}/>
         )
-      })
-    }
+      });
+    };
     return(
       <div>
         <Header />
-          <h2 className="newRecipeHeader">Update Recipe</h2>
-          <div className="newRecipeDiv">
+        <h2 className="newRecipeHeader">Update Recipe</h2>
+        <div className="newRecipeDiv">
           <div className="ingredientInputDiv">
             <label>Update Ingredients</label>
             {recipeIngredients}
@@ -107,7 +91,7 @@ export class EditRecipe extends React.Component{
               /> 
             </div>
             <div className="imgInputDiv">
-              <label for="fileUpload" className="customFileUpload">Update Images</label>
+              <label htmlFor="fileUpload" className="customFileUpload">Update Images</label>
               <input 
                 id="fileUpload"
                 name="file" 
@@ -131,8 +115,8 @@ export class EditRecipe extends React.Component{
         </div>
       </div>
     )
-  }
-}
+  };
+};
 
 export const mapStateToProps = state => ({
   initialValues: state.recipeReducers.oneRecipe,
@@ -142,8 +126,7 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps,
-{getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe})
-  (reduxForm({
-    form: 'editRecipe',
-    enableReinitialize: true 
-  })(EditRecipe));
+{getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe})(reduxForm({
+  form: 'editRecipe', 
+  enableReinitialize: true 
+})(EditRecipe));

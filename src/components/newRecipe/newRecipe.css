@@ -1,3 +1,8 @@
+.newRecipeSection .recipeReducerErrorMsg{
+  padding-top: 0;
+  color: red;
+}
+
 .newRecipeHeader{
   font-family: 'Sacramento', cursive;
   text-align: center;
@@ -7,7 +12,6 @@
   font-size: 32px;
   letter-spacing: 1px;
   padding: 20px;
-
 }
 
 .recipeTitle label, .newRecipeInstructions label{
@@ -37,8 +41,8 @@
 }
 
 .newRecipeInstructions div{
-    display: grid;
-  }
+  display: grid;
+}
 
 .newRecipeInstructions textarea{
   margin-top: 10px;
@@ -49,6 +53,7 @@
 .submitNewRecipeButton{
   margin: auto;
   display: block;
+  font-size: 16px;
   margin-top: 20px;
   margin-bottom: 30px;
   padding: 10px 20px;
@@ -87,7 +92,6 @@
 
   .recipeTitle input{
     width: 400px;
-    
   }
 
   .newRecipeInstructions{

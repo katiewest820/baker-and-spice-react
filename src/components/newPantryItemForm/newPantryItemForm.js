@@ -7,14 +7,13 @@ import {required, renderField} from '../../validators';
 export class NewPantryItemForm extends React.Component{
 
   saveNewPantryItemToDB(values){
-    console.log(values)
      let pantryItem = {
        item: values.itemName,
        inStock: true
-     }
-     this.props.dispatch(submitNewPantryItem(`${API_BASE_URL}/pantry/newPantryItem`, pantryItem))
-     this.props.dispatch(reset('pantry'))
-  }
+     };
+     this.props.dispatch(submitNewPantryItem(`${API_BASE_URL}/pantry/newPantryItem`, pantryItem));
+     this.props.dispatch(reset('pantry'));
+  };
 
   render(){
     return(
@@ -26,11 +25,11 @@ export class NewPantryItemForm extends React.Component{
           type="text"
           validate={required}
         />
-        <button type="submit">Submit</button>
+        <button className="newPantryItemButton" type="submit">Submit</button>
       </form>
     )
-  }
-}
+  };
+};
 
 export default reduxForm({
   form: 'pantry' 

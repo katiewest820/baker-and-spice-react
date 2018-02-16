@@ -1,8 +1,9 @@
 .registerInputDiv{
-  width: 80%;
+  width: 82%;
   border: solid 2px black;
   padding: 20px;
   margin: auto;
+  margin-top: 20%;
 }  
 
 .registerInputDiv div{
@@ -20,6 +21,7 @@
 .registerInputDiv input{
   border: none;
   border-bottom: 1px solid black;
+  font-family: 'Karla', sans-serif;
 }
 
 .registerInputDiv button{
@@ -42,19 +44,12 @@
   grid-column: span 2;
 }
 
-.registerErrorMsg{
-  text-align: center;
-  margin-top: 20%;
-  margin-bottom: 5px;
-  color: red;
-  height: 22px;
-}
-
 @media (min-width: 900px){
 
   .registerInputDiv{
     width: 40%;
     padding: 30px;
+    margin-top: 6%;
   }
 
   .registerInputDiv div{
@@ -67,10 +62,6 @@
 
   .registerInputDiv button{
     padding: 10px 15px;
-  }
-
-  .registerErrorMsg{
-    margin-top: 8%;
   }
 
 }

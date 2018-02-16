@@ -1,14 +1,42 @@
-.noRecipesYet{
+.recipeReducerErrorMsg{
+  margin: 0;
+  padding-top: 80px;
   text-align: center;
-  margin-top: 20%;
+}
+
+.noRecipesYetDiv{
+  position: relative;
+  width: fit-content;
+  margin: auto;
+  padding-top: 25%;
+}
+
+.backgroundLogoImg{
+  height: 300px;
+  opacity: .4;
+  border-radius: 100%;
+  display: block;
+  margin: auto;
+}
+
+.noRecipesYet{
+  position: absolute;
+  text-align: center;
+  font-size: 19px;
+  top: 50%;
 }
 
 .noRecipesYet a{
-  color: #28b8be;
-  text-decoration: none;
+  color: #0a959b;
+}
+
+.noRecipesYet a:hover{
+  color: black;
 }
 
 .myRecipesDiv{
+  min-height: stretch;
+  max-height: fit-content;
   background-color: #e9ebee;
   padding-bottom: 30px;
 }
@@ -26,10 +54,9 @@
   display: grid;
   margin: auto;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 3fr 1fr;
-  width: 80%;
+  grid-template-rows: 1fr 25px;
+  width: 75%;
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .searchMyRecipes input{
@@ -39,10 +66,11 @@
 }
 
 .searchMyRecipes label{
-  font-size: 20px;
+  max-width: 130px;
+  font-size: 16px;
+  align-self: end;
   font-weight: bold;
   color: #28b8be;
-
 }
 
 .searchMyRecipes button{
@@ -65,10 +93,19 @@
   grid-column: span 2;
 }
 
-@media (min-width: 640px){
+@media (min-width: 800px){
+
+  .noRecipesYetDiv{
+    padding: 4% 0%;
+  }
+
+  .backgroundLogoImg{
+    height: 450px;
+  }
 
   .noRecipesYet{
-    margin-top: 10%;
+    font-size: 25px;
+    top: 40%;
   }
 
   .myRecipesHeader{
@@ -76,20 +113,27 @@
     text-decoration: none;
   }
 
+  .myRecipesDiv form{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: fit-content;
+    margin: auto;
+  }
+
   .searchMyRecipes div{
-    width: 30%;
+    width: fit-content;
+    max-width: 350px;
     margin-top: 30px;
     margin-bottom: 10px;
     grid-template-rows: 3fr 20px;
   }
 
   .searchMyRecipes label{
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .searchMyRecipes button{
-    padding: 10px 20px;
-    font-size: 20px;
-    
+    padding: 10px 15px;
+    font-size: 18px;
   }
 }

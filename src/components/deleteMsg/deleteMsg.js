@@ -1,20 +1,17 @@
 import React from 'react';
 import Header from '../header/header';
 import {Link, Redirect} from 'react-router-dom';
-//import axios from 'axios';
 import {API_BASE_URL} from '../../config';
 import {connect} from 'react-redux';
-//import store from '../../store';
 import {deleteRecipe} from '../../actions/recipeActions';
 import './deleteMsg.css';
 
 export class DeleteMsg extends React.Component{
 
   apiCallForDelete(){
-    console.log(this)
     let recipeSlug = this.props.match.params.recipeSlug;
     this.props.deleteRecipe(`${API_BASE_URL}/recipe/deleteOne/${recipeSlug}`);
-  }
+  };
 
   render(){
     return(
@@ -30,8 +27,8 @@ export class DeleteMsg extends React.Component{
         </div>
       </div>
     )
-  }
-}
+  };
+};
 
 export const mapStateToProps = state => ({
   deleted: state.recipeReducers.deleted

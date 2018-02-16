@@ -8,81 +8,87 @@ import {getOneRecipe} from '../../actions/recipeActions';
 import {missingPantryIngredients} from '../../actions/filterIngredientsActions';
 import './recipeDetails.css';
 import InStockValueDropDown from '../inStockValueDropDown/inStockValueDropDown';
-
+import { toast } from 'react-toastify';
+import { css } from 'glamor';
 
 export class RecipeDetails extends React.Component{
 
   componentDidMount(){
     let recipeSlug = this.props.match.params.recipeSlug;
-    let userId = localStorage.getItem('userId')
+    let userId = localStorage.getItem('userId');
     Promise.all([
       this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${userId}/${recipeSlug}`),
       this.props.getPantryItems(`${API_BASE_URL}/pantry/allPantryItems/${userId}`)
-    ]).then(() => {
-      this.filterPantry()
+    ]).then((response) => {
+      if(!response[0].error && !response[1].error){
+        this.filterPantry();
+      }
     });
-  }
+  };
 
   filterPantry(){
     let thisRecipeIngredientsDetails = this.props.oneRecipe.recipeIngredients;
     let currentPantryList = this.props.pantryItems;
-    console.log(this.props.oneRecipe)
-    console.log(currentPantryList)
     this.props.missingPantryIngredients(thisRecipeIngredientsDetails, currentPantryList);
-  }
+  };
 
   addMissingItemToPantry(item, inStockValue){
     let newPantryItem;
-    if(inStockValue === undefined){
-      newPantryItem = {
-        item: item,
-        inStock: true
-      }
-    }else{
-      newPantryItem = {
-        item: item,
-        inStock: inStockValue
-      }
-    }
+    newPantryItem = {
+      item: item,
+      inStock: inStockValue
+    };
     this.props.submitNewPantryItem(`${API_BASE_URL}/pantry/newPantryItem`, newPantryItem)
     .then(() => {
-      this.filterPantry()
+      this.filterPantry();
+      toast("Item added to your pantry!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1500,
+        className: css({
+          background: "#28b8be",
+          fontWeight: "bold",
+          color: "white"
+        })
+      });
     });
-  }
+  };
     
   render(){
-    let thisRecipeDetails = this.props.oneRecipe
+    let thisRecipeDetails = this.props.oneRecipe;
     let recipeImage;
-    let missing = this.props.missingIngredients
-    let outOfStock = this.props.outOfStockIngredients
+    let missing = this.props.missingIngredients;
+    let outOfStock = this.props.outOfStockIngredients;
     let ingredients;
     let missingIngredients;
-    console.log(thisRecipeDetails)
     if(thisRecipeDetails.recipeImages !== 'undefined'){
       recipeImage = <img alt="" className="recipeImage" src={`//${window.location.hostname}:8080/images/${thisRecipeDetails.recipeImages}`} />
     }else{
-      recipeImage = <img alt="" className="recipeImage" src={require('./defaultRecipeImage.png')}/>
+      recipeImage = <img alt="" className="recipeImage" src={require('../../defaultRecipeImage.png')}/>
     }
     if(thisRecipeDetails.recipeIngredients){
       ingredients = thisRecipeDetails.recipeIngredients.map((item, index) => {
         if(outOfStock.find((name) => { return name === item.name})){
           return (
             <div key={index}>
-              <p className="bulletPoint">{item.quantity}</p>
               <p className="outOfStock">*{item.name}</p>
+              <p className="bulletPoint">{item.quantity}</p>
             </div>
           )
         }else{
           return (
             <div key={index}>
-              <p className="bulletPoint">{item.quantity}</p>
               <p className="inStock">{item.name}</p>
+              <p className="bulletPoint">{item.quantity}</p>
             </div>
           )
         }
-      })  
-    } else{
-      return null
+      });  
+    }else{
+      return (
+        <div>
+           <Header />
+        </div>
+      )
     }
     if(missing.length > 0){
       missingIngredients = missing.map((item, index) =>{
@@ -92,7 +98,7 @@ export class RecipeDetails extends React.Component{
             <InStockValueDropDown item={item} index={index} onClick={this.addMissingItemToPantry.bind(this)}/>
           </div>
         )
-      })
+      });
     }else{
       missingIngredients = <p>Nothing! You are all set to begin baking.</p>
     }
@@ -126,8 +132,8 @@ export class RecipeDetails extends React.Component{
         </div>
       </div>
     )
-  }
-}
+  };
+};
 
 export const mapStateToProps = state => ({
   oneRecipe: state.recipeReducers.oneRecipe,

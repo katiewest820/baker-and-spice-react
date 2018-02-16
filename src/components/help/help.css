@@ -1,0 +1,35 @@
+.helpInfoDiv{
+  padding: 10px;
+  min-height: stretch;
+  max-height: fit-content;
+  background-color: #e9ebee;
+}
+
+.helpInfoDiv h2{
+  color: #0a959b;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.helpInfoDiv h2:hover{
+  cursor: pointer;
+  color: black;
+}
+
+.helpInfoDiv p{
+  width: 85%;
+  margin: auto;
+  padding: 8px;
+}
+
+@media (min-width: 800px){
+
+  .helpInfoDiv{
+    padding: 30px;
+    padding-top: 20px;
+  }
+
+  .helpInfoDiv p{
+    width: 40%;
+  }
+}

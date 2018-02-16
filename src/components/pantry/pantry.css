@@ -1,3 +1,160 @@
 .red .react-toggle-track{
   background-color: red;
 }
+
+.pantryList{
+  padding: 30px;
+  min-height: stretch;
+  max-height: fit-content;
+  background-color: #e9ebee;
+}
+
+.pantryList .formError{
+  grid-column: span 2
+}
+
+.pantryListHeader{
+  font-family: 'Sacramento', cursive;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  font-size: 40px;
+  letter-spacing: 1px;
+  padding: 20px;
+}
+
+.pantryItemsDiv{
+  width: 75%;
+  margin: auto;
+  border: solid 2px black;
+  padding: 50px;
+  position: relative;
+  background-color: white;
+}
+
+.eachPantryItem{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: fit-content;
+  align-items: center;
+  justify-items: center;
+  margin: auto;
+}
+
+.inStockColor{
+  position: absolute;
+  margin: 0px;
+  top: 3px;
+  left: 1%;
+}
+
+.outOfStockColor{
+  position: absolute;
+  margin: 0px;
+  top: 22px;
+  left: 1%;
+}
+
+.inStockColor span{
+  width: 13px;
+  height: 13px;
+  background-color: green;
+  display: inline-block;
+} 
+
+.outOfStockColor span{
+  width: 13px;
+  height: 13px;
+  background-color: red;
+  display: inline-block;
+}
+
+.pantryList form{
+  text-align: center;
+}
+
+.pantryList form div{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  width: 80%;
+  margin: auto;
+}
+
+.pantryList label{
+  font-size: 18px;
+  font-weight: bold;
+  color: #28b8be;
+}
+
+.pantryList input{
+  border: none;
+  background-color: #e9ebee;
+  border-bottom: solid 1px black;
+}
+
+.newPantryItemButton{
+  padding: 5px 10px;
+  background-color: white;
+  border: solid 2px black;
+  font-weight: bold;
+  align-self: start;
+  margin-bottom: 15px;
+}
+
+.newPantryItemButton:hover{
+  background-color: black;
+  color: white;
+}
+
+.pantryItemName{
+  grid-column: span 2;
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+
+.pantryItemDelete{
+  padding: 10px;
+  border: none;
+  background-color: white;
+}
+
+.pantryItemDelete:hover{
+  color: #28b8be;
+  cursor: pointer;
+}
+
+@media (min-width: 800px){
+
+  .pantryListHeader{
+    font-size: 55px;
+  }
+
+  .pantryItemsDiv{
+    width: 30%;
+  }
+  .pantryList form{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: fit-content;
+    margin: auto;
+    grid-gap: 20px;
+  }
+
+  .newPantryItemButton{
+    margin-bottom: 0px;
+  }
+
+  .pantryList label, .pantryItemName{
+    font-size: 21px;
+  }
+
+  .pantryList form div{
+    grid-column-gap: 10px;
+    width: 100%;
+  }
+
+}

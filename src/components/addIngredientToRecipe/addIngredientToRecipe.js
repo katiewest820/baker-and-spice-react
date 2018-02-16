@@ -3,7 +3,6 @@ import {reduxForm, Field} from 'redux-form';
 import {required, renderField} from '../../validators';
 
 export class AddIngredientToRecipe extends React.Component{
-
   render(){
     return(
       <form className="newRecipeIngredient" onSubmit={this.props.handleSubmit(values => this.props.onClick(values))}>
@@ -21,13 +20,11 @@ export class AddIngredientToRecipe extends React.Component{
           component={renderField}
           validate={required}
         />
-        <button type="submit" >Add</button>
+        <button type="submit">Add</button>
       </form>
     )
-  }
-}
-
-
+  };
+};
 
 export default reduxForm({
   form: 'addIngredientToRecipe'

@@ -10,109 +10,96 @@ import {GET_ONE_RECIPE,
 
 const initialState = {
   allRecipes: [],
+  finishedLoading: false,
   oneRecipe: '',
   searchResults: [],
-  errorMsg: '',
   deleted: false,
   newRecipeIngredientList: [],
   creatingRecipeIngredientList: [],
   recipeSlug: ''
-
-}
+};
 
 export default(state=initialState, action) => {
+  if(action.error){
+    return state
+  }
   switch(action.type){
     case GET_ONE_RECIPE:
-      console.log(action)
+      //return one recipe
       return state = {
         ...state, 
         oneRecipe: action.payload.data.data, 
-        deleted: false, 
-        errorMsg: '',  
+        finishedLoading: false,
+        deleted: false,   
         recipeSlug: ''
-      }; 
+      };
     case GET_ALL_RECIPES:
-      console.log(action)
+      //return all recipes
       return state = {
         ...state, 
         allRecipes: action.payload.data.data, 
+        finishedLoading: true,
         searchResults: [],
         creatingRecipeIngredientList: [], 
         newRecipeIngredientList: [], 
         oneRecipe: '', 
-        deleted: false, 
-        errorMsg: '',  
+        deleted: false,   
         recipeSlug: ''
-      };
-    
-    case GET_RECIPES_BY_SEARCH_TERM:
-    console.log(action)
-      if(action.payload.data.data.length === 0){
-        return state = {
-          ...state,
-          errorMsg: 'No Results please try your search again'
-        }
-      }else{
-        return state = {
-          ...state,
-          searchResults: action.payload.data.data,
-          errorMsg: ''
-        }
       }
-
+    case GET_RECIPES_BY_SEARCH_TERM:
+      //return recipes by search term
+      return state = {
+        ...state,
+        searchResults: action.payload.data.data,
+        finishedLoading: true
+      } 
     case DELETE_RECIPE:
       return state = {
         ...state, 
-        deleted: true, 
-        recipeSlug: ''
-      };
-    
+        deleted: true,
+        finishedLoading: false, 
+        recipeSlug: '',
+        errorMsg: ''
+      }
     case SUBMIT_NEW_RECIPE:
-      console.log(action)
-      console.log(state)
       return state = {
         ...state, 
         creatingRecipeIngredientList: [], 
         newRecipeIngredientList: [], 
         deleted: false, 
-        errorMsg: '', 
+        finishedLoading: false,
         recipeSlug: action.payload.data.data.recipeSlug
-      };
-    
+      }
     case EDIT_RECIPE:
-      console.log(action)
+      //return edited recipe
       return state = {
         ...state, 
         oneRecipe: '', 
         creatingRecipeIngredientList: [], 
         newRecipeIngredientList: [], 
         deleted: false, 
-        errorMsg: '', 
+        finishedLoading: false,
         recipeSlug: action.payload.data.data.recipeSlug
-      };
-    
+      }
     case ADD_INGREDIENT_TO_RECIPE:
-      let updatedIngredientList = state.creatingRecipeIngredientList.slice()
-      updatedIngredientList.push(action.payload)
-      console.log(action.payload)
+      //adding ingredients to edited recipe
+      let updatedIngredientList = state.creatingRecipeIngredientList.slice();
+      updatedIngredientList.push(action.payload);
       return state = {
         ...state, 
         creatingRecipeIngredientList: updatedIngredientList, 
         newRecipeIngredientList: updatedIngredientList
       }
-
     case NEW_RECIPE_INGREDIENT_LIST:
-      console.log(action.payload)
+      //copy of ingredient list that is final and saved after edits and adds
       return state = {
         ...state, 
         newRecipeIngredientList: action.payload.slice(), 
-        deleted: false, 
-        errorMsg: '',  
+        deleted: false,   
         recipeSlug: ''
       }
-
     case EDIT_NEW_RECIPE_INGREDIENT_LIST:
-      console.log(action.payload)
+      //allows edits to inputs while building recipe list
       return state = {
         ...state, 
         newRecipeIngredientList: action.payload.slice(), 
@@ -120,6 +107,6 @@ export default(state=initialState, action) => {
         recipeSlug: ''
       }
     default: 
-      return state
+      return state;
   }
-}
+};

@@ -10,6 +10,7 @@
   color: #28b8be;
   font-weight: bold;
 }
+
 .newRecipeIngredient{
   text-align: center;
 }
@@ -75,7 +76,6 @@
 
   .imgInputDiv{
     width: 550px;
-    
   }
   
 }

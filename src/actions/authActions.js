@@ -1,9 +1,7 @@
 import axios from 'axios';
-
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
-export const LOGOUT = 'LOGOUT'
-
+export const LOGOUT = 'LOGOUT';
 
 export function login(url, loginData){
   const request = axios.post(url, {

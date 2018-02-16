@@ -2,7 +2,7 @@ import React from 'react';
 import LandingPageHeader from '../landingPageHeader/landingPageHeader';
 import {reduxForm, Field} from 'redux-form';
 import {connect} from 'react-redux';
-import {register, login, logout} from '../../actions/authActions';
+import {register, login} from '../../actions/authActions';
 import {Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';
 import {required, renderField} from '../../validators';
@@ -10,35 +10,23 @@ import './register.css';
 
 export class Register extends React.Component{
 
-  componentDidMount(){
-    this.props.logout()
-  }
-
   sendUserRegistrationDataToDB(values){
-    console.log(values)
     let loginValues = {
       userName: values.userName,
       password: values.password
-    }
-    //Promise.all([
+    };
     this.props.register(`${API_BASE_URL}/auth/register`, values)
-    .then(() => {
-      if(this.props.errorMessage == ''){
-        console.log(loginValues)
-        this.props.login(`${API_BASE_URL}/auth/login`, loginValues)
-      }
+    .then((response) => {
+      if(!response.error){
+        this.props.login(`${API_BASE_URL}/auth/login`, loginValues);
+      };
     });
-  }
+  };
 
   render(){
-    let registerErrorMsg = <p className="registerErrorMsg"></p>
-    if(this.props.errorMessage.length > 0){
-      registerErrorMsg = <p className="registerErrorMsg">{this.props.errorMessage}</p>
-    }
     return(
       <div>
-      <LandingPageHeader /> 
-        {registerErrorMsg}
+        <LandingPageHeader /> 
         <form className="registerInputDiv" onSubmit={this.props.handleSubmit(values => this.sendUserRegistrationDataToDB(values))}>
           <Field 
             label="First Name"
@@ -73,15 +61,14 @@ export class Register extends React.Component{
         </form>
       </div>
     )
-  }
-}
+  };
+};
 
 const mapStateToProps = state => ({
-  errorMessage: state.authReducers.errorMsg,
   loginRedirect: state.authReducers.loginRedirect
 });
 
-Register = connect(mapStateToProps, {register, login, logout})(Register)
+Register = connect(mapStateToProps, {register, login})(Register);
 
 export default reduxForm({
   form: 'userRegister' 

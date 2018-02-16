@@ -51,13 +51,12 @@ export function submitNewRecipe(url, newRecipeData){
 };
 
 export function editRecipe(url, editData){
-
-  const request = axios.put(url, editData, {headers: {authorization: myStorage.authToken}},)
+  const request = axios.put(url, editData, {headers: {authorization: myStorage.authToken}});
   return {
     type: EDIT_RECIPE,
     payload: request
-  }
-}
+  };
+};
 
 export const addIngredientToRecipe = payload => ({
   type: ADD_INGREDIENT_TO_RECIPE,

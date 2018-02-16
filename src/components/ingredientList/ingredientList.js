@@ -10,5 +10,5 @@ export default class IngredientList extends React.Component{
         <button value={this.props.quantity} onClick={event => this.props.deleteIngredientFromRecipe(event.target.value, this.props.name, this.props.index)}><i className="fas fa-trash-alt"></i></button>
       </div>  
     )
-  }
-} 
+  };
+}; 

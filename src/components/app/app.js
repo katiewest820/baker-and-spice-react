@@ -1,6 +1,5 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import './app.css';
 import Main from '../main/main';
 import LandingPage from '../landingPage/landingPage';
 import Register from '../register/register';
@@ -13,6 +12,7 @@ import DeleteMsg from '../deleteMsg/deleteMsg';
 import EditRecipe from '../editRecipe/editRecipe';
 import SearchMyRecipes from '../searchMyRecipes/searchMyRecipes';
 import APIRecipeSearchResults from '../apiRecipeSearchResults/apiRecipeSearchResults';
+import Help from '../help/help';
 
 export default class App extends React.Component {
   render() {
@@ -20,6 +20,7 @@ export default class App extends React.Component {
       <div>
         <Switch>
           <Route exact path="/" component={LandingPage}/>
+          <Route exact path="/help" component={Help}/>
           <Route exact path="/home" component={Main} />
           <Route exact path="/recipeDetails/:recipeSlug" component={RecipeDetails} />
           <Route exact path="/register" component={Register} />
@@ -34,7 +35,7 @@ export default class App extends React.Component {
         </Switch>
       </div>
     );
-  }
-}
+  };
+};
 
 
