@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {apiRecipeSearch} from '../../actions/apiRecipeSearchActions';
 import ImageGallery from 'react-image-gallery';
 import APIRecipeSearchForm from '../apiRecipeSearchForm/apiRecipeSearchForm';
+import { PulseLoader } from 'react-spinners';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
 
 export class APIRecipeSearchResults extends React.Component{
@@ -39,7 +40,19 @@ export class APIRecipeSearchResults extends React.Component{
   
   render(){
     let images = [];
-    if(this.props.errorMsg){
+    if(this.props.loading){
+      return(
+        <div>
+          <Header />
+          <div className="inspirationSearchDiv">
+            <PulseLoader
+              color={'#28b8be'} 
+              loading={true}
+            />
+          </div>
+        </div>
+      )
+    }else if(this.props.errorMsg){
       return(
         <div>
           <Header />
@@ -68,12 +81,19 @@ export class APIRecipeSearchResults extends React.Component{
         </div>
       )
     }else{
-      return(null)
+      return(
+        <div>
+          <Header />
+          <div className="inspirationSearchDiv">
+          </div>
+        </div>
+      )
     }
   };
 };
 
 const mapStateToProps = state => ({
+  loading: state.apiRecipeSearchReducers.loading,
   searchResults: state.apiRecipeSearchReducers.searchResults,
   errorMsg: state.apiRecipeSearchReducers.errorMsg
 });

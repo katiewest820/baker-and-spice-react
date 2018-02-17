@@ -20,6 +20,10 @@
   background-color: #e9ebee;
 }
 
+.css-p8afu3{
+  margin-top: 30% !important;
+}
+
 .inspirationSearchInput{
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -112,6 +116,10 @@
 
   .inspirationSearchDiv{
     padding: 40px;
+  }
+
+  .css-p8afu3{
+    margin-top: 10% !important;
   }
 
   .inspirationSearchInput input{
