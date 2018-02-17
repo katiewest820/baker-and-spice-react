@@ -17,6 +17,7 @@ export class LandingPage extends React.Component{
   };
 
   render(){
+    console.log(this.props.loginRedirect)
     return(
       <section className="landingPage">
         <LandingPageHeader />

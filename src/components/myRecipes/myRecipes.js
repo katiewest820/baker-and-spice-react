@@ -37,9 +37,9 @@ export class MyRecipes extends React.Component{
     //displays all recipes on page load
     if(this.props.allRecipes.length > 0 && this.props.finishedLoading){
       for(let i = 0; i < this.props.allRecipes.length; i++){
-        let recipeImg = require('../../defaultRecipeImage.png');
+        let recipeImg = "//defaultRecipeImage.png";
         if(this.props.allRecipes[i].recipeImages !== 'undefined'){
-          recipeImg = `//${window.location.hostname}:8080/images/${this.props.allRecipes[i].recipeImages}`;
+          recipeImg = `//${API_BASE_URL}/images/${this.props.allRecipes[i].recipeImages}`;
         };
         recipe.push({
           original: recipeImg,
@@ -60,7 +60,7 @@ export class MyRecipes extends React.Component{
       return(
         <div className="myRecipesDiv">
           <div className="noRecipesYetDiv">
-            <img alt="logo" className="backgroundLogoImg" src={require('../../defaultRecipeImage.png')}/>
+            <img alt="logo" className="backgroundLogoImg" src="//defaultRecipeImage.png"/>
             <h2 className="noRecipesYet">Your recipes will display here. <br/>To begin building your first recipe click on <Link to="/newRecipe">New Recipe</Link></h2>
           </div>
         </div>

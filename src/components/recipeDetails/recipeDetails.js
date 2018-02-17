@@ -61,9 +61,9 @@ export class RecipeDetails extends React.Component{
     let ingredients;
     let missingIngredients;
     if(thisRecipeDetails.recipeImages !== 'undefined'){
-      recipeImage = <img alt="" className="recipeImage" src={`//${window.location.hostname}:8080/images/${thisRecipeDetails.recipeImages}`} />
+      recipeImage = <img alt="" className="recipeImage" src={`//${API_BASE_URL}/images/${thisRecipeDetails.recipeImages}`} />
     }else{
-      recipeImage = <img alt="" className="recipeImage" src={require('../../defaultRecipeImage.png')}/>
+      recipeImage = <img alt="" className="recipeImage" src="//defaultRecipeImage.png"/>
     }
     if(thisRecipeDetails.recipeIngredients){
       ingredients = thisRecipeDetails.recipeIngredients.map((item, index) => {
