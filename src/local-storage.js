@@ -2,6 +2,8 @@ export const saveAuthTokenAndUserId = (authToken, userId) => {
   try {
     localStorage.setItem('authToken', authToken)
     localStorage.setItem('userId', userId)
+    console.log(localStorage.getItem('authToken'))
+    console.log(localStorage.getItem('userId'))
   } catch(e) {}
 };
 
