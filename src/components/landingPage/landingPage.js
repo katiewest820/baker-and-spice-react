@@ -17,6 +17,7 @@ export class LandingPage extends React.Component{
   };
 
   render(){
+
     console.log(this.props.loginRedirect)
     return(
       <section className="landingPage">
@@ -48,7 +49,7 @@ export class LandingPage extends React.Component{
           <h1>Try it out Now!</h1>
           <p>Login with a Demo Account to see more</p>
           <button onClick={this.demoLogin.bind(this)}>Demo Account Login</button>
-          {this.props.loginRedirect && (
+          {localStorage.getItem('authToken') && (
             <Redirect to="/home"/>
           )}
         </div> 

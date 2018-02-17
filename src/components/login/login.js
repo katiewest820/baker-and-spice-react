@@ -35,7 +35,7 @@ export class Login extends React.Component{
             name="password"
           />
           <button type="submit">Submit</button>
-          {this.props.loginRedirect && (
+          {localStorage.getItem('authToken') && (
             <Redirect to="/home"/>
           )}
         </form>

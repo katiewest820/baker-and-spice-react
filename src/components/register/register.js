@@ -57,7 +57,7 @@ export class Register extends React.Component{
             validate={required}
           />
           <button type="submit">Submit</button>
-          {this.props.loginRedirect && (<Redirect to="/home"/>)}
+          {localStorage.getItem('authToken') && (<Redirect to="/home"/>)}
         </form>
       </div>
     )
