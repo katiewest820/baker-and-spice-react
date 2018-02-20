@@ -67,8 +67,8 @@ export class APIRecipeSearchResults extends React.Component{
         let httpsURL = this.props.searchResults[i].image_url.replace('http', 'https')
         console.log(httpsURL)
         images.push({
-          original: this.props.searchResults[i].image_url,
-          thumbnail: this.props.searchResults[i].image_url,
+          original: httpsURL,//this.props.searchResults[i].image_url,
+          thumbnail: httpsURL,//this.props.searchResults[i].image_url,
           description: this.props.searchResults[i].title,
           link: this.props.searchResults[i].source_url
         });
