@@ -6,7 +6,7 @@ const initialState = {
   loading: true
 };
 
-export default(state=initialState, action) => {
+export default (state=initialState, action) => {
   //error handler
   if(action.error){
     return state

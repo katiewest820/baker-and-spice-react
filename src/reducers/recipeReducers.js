@@ -58,8 +58,7 @@ export default(state=initialState, action) => {
         ...state, 
         deleted: true,
         finishedLoading: false, 
-        recipeSlug: '',
-        errorMsg: ''
+        recipeSlug: ''
       }
     case SUBMIT_NEW_RECIPE:
       return state = {

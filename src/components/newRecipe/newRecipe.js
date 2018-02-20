@@ -10,7 +10,7 @@ import {reduxForm, Field, reset} from 'redux-form';
 import {required, renderField, renderTextAreaField} from '../../validators';
 import './newRecipe.css';
 
-class NewRecipe extends React.Component{
+export class NewRecipe extends React.Component{
 
   updateIngredient(value, name, index){
     let currentState = store.getState(this.props.recipeReducers);

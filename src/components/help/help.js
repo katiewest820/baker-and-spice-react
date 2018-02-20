@@ -23,7 +23,7 @@ toggleOpenClose(key){
       <div>
         <Header />
         <div className="helpInfoDiv">
-          <h2 onClick={this.toggleOpenClose.bind(this, 'newRecipeIsOpened')}>Creating New Recipes</h2>
+          <h2 className="new" onClick={this.toggleOpenClose.bind(this, 'newRecipeIsOpened')}>Creating New Recipes</h2>
           <Collapse isOpened={this.state.newRecipeIsOpened} >
             <p>To begin creating a new recipe click on "New Recipe" in the header.</p>
             <p>Complete your Recipe Title and instructions entries. To add each recipe ingredient, complete your entry and click "Add" when finished.</p>

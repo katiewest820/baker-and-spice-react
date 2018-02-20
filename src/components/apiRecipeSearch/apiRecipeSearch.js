@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../header/header';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 import './apiRecipeSearch.css';
 import APIRecipeSearchForm from '../apiRecipeSearchForm/apiRecipeSearchForm';
 
-export class APIRecipeSearch extends React.Component{
+export default class APIRecipeSearch extends React.Component{
   render(){
     return(
       <div>
@@ -19,4 +19,4 @@ export class APIRecipeSearch extends React.Component{
   };
 };
 
-export default connect()(APIRecipeSearch);
+//export default connect()(APIRecipeSearch);

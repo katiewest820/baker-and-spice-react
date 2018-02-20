@@ -118,7 +118,8 @@ export class EditRecipe extends React.Component{
   };
 };
 
-export const mapStateToProps = state => ({
+//export - removed from const
+const mapStateToProps = state => ({
   initialValues: state.recipeReducers.oneRecipe,
   oneRecipe: state.recipeReducers.oneRecipe,
   recipeIngredientList: state.recipeReducers.newRecipeIngredientList,

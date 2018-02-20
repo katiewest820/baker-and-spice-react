@@ -7,6 +7,7 @@ let myStorage = window.localStorage;
 
 
 export function submitNewPantryItem(url, pantryItems){
+  console.log(myStorage)
   const request = axios.post(url, {token: myStorage.authToken, userId: myStorage.userId, item: pantryItems.item, inStock: pantryItems.inStock});
   return {
     type: SUBMIT_NEW_PANTRY_ITEM,
