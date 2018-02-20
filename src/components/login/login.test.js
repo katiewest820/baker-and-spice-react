@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {Login} from './login';
 import store from '../../store';
-import '../../mock-localstorage';
+import '../../mock-localStorage';
 
 describe('<Login />', () => {
   it('Renders without crashing', () => {

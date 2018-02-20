@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {LandingPage} from './landingPage';
-import '../../mock-localstorage';
+import '../../mock-localStorage';
 
 describe('<LandingPage />', () => {
   it('Renders without crashing', () => {
