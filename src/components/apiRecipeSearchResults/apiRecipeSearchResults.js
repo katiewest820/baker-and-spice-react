@@ -64,6 +64,8 @@ export class APIRecipeSearchResults extends React.Component{
       )
     }else if(this.props.searchResults.length > 0){
       for(let i = 0; i < this.props.searchResults.length; i++){
+        let httpsURL = this.props.searchResults[i].image_url.replace('http', 'https')
+        console.log(httpsURL)
         images.push({
           original: this.props.searchResults[i].image_url,
           thumbnail: this.props.searchResults[i].image_url,
