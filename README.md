@@ -14,7 +14,21 @@ Baker & Spice is useful for those who love to cook and who want a tool for build
 From the app, users can create new recipes from scratch and from their recipe details, inventory their pantry to see what items they need to begin cooking.
 Users are also able to search by an ingredient type or recipe name if they need inspiration or help to build a new recipe of their own.
 
+**New Recipe Page:
+(https://github.com/katiewest820/baker-and-spice-react/blob/master/src/images/new_recipe.PNG)
+
+**Recipe Details Page:
+(https://github.com/katiewest820/baker-and-spice-react/blob/master/src/images/details.PNG)
 ## Technologies Used
+
+**Pantry List Page:
+(https://github.com/katiewest820/baker-and-spice-react/blob/master/src/images/pantry_list.PNG)
+
+**Search for Recipes Page:
+(https://github.com/katiewest820/baker-and-spice-react/blob/master/src/images/search.PNG)
+
+**Results from Search:
+(https://github.com/katiewest820/baker-and-spice-react/blob/master/src/images/results.PNG)
 
 ### Frontend Technologies:
 * React
