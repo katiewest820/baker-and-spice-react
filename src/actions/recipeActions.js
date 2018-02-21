@@ -8,6 +8,7 @@ export const GET_ONE_RECIPE = 'GET_ONE_RECIPE';
 export const NEW_RECIPE_INGREDIENT_LIST = 'NEW_RECIPE_INGREDIENT_LIST';
 export const EDIT_NEW_RECIPE_INGREDIENT_LIST = 'EDIT_NEW_RECIPE_INGREDIENT_LIST';
 export const ADD_INGREDIENT_TO_RECIPE = 'ADD_INGREDIENT_TO_RECIPE';
+export const PENDING_LOAD = 'PENDING_LOAD';
 let myStorage = window.localStorage;
 
 export function getOneRecipe(url){
@@ -71,4 +72,8 @@ export const newRecipeIngredientList = payload => ({
 export const editNewRecipeIngredientList = payload => ({
   type: EDIT_NEW_RECIPE_INGREDIENT_LIST,
   payload
+});
+
+export const pendingLoad = () => ({
+  type: PENDING_LOAD
 });

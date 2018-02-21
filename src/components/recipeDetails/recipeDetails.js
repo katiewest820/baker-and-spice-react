@@ -54,6 +54,7 @@ export class RecipeDetails extends React.Component{
   };
     
   render(){
+
     let thisRecipeDetails = this.props.oneRecipe;
     let recipeImage;
     let missing = this.props.missingIngredients;
@@ -61,7 +62,7 @@ export class RecipeDetails extends React.Component{
     let ingredients;
     let missingIngredients;
     if(thisRecipeDetails.recipeImages !== 'undefined'){
-      recipeImage = <img alt="" className="recipeImage" src={`${API_BASE_URL}/images/${thisRecipeDetails.recipeImages}`} />
+      recipeImage = <img alt="" className="recipeImage" src={thisRecipeDetails.recipeImages} />
     }else{
       recipeImage = <img alt="" className="recipeImage" src="/defaultRecipeImage.png"/>
     }
@@ -113,7 +114,7 @@ export class RecipeDetails extends React.Component{
           <div className="recipeDetailsBackgroundDiv">
             <div className="recipeIngredientsDiv"> 
               <h3>Ingredients</h3>
-              <p className="outOfStockMsg">Pantry item is out of stock = <span className= "outOfStock">*</span></p>
+              <p className="outOfStockMsg">Pantry item is out of stock = <span className= "outOfStockExample">*</span></p>
               {ingredients}
             </div>
             <div className="recipeInstructionsDiv">

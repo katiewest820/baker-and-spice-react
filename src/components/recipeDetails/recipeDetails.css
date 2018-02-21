@@ -3,12 +3,15 @@
   padding-bottom: 30px;
   padding-top: 140px;
   position: relative;
-  height: stretch;
 }
 
-.outOfStock{
+.outOfStock, .outOfStockExample{
   color: red;
   font-weight: bold;
+}
+
+.outOfStockExample{
+  font-size: 16px;
 }
 
 .outOfStockMsg{

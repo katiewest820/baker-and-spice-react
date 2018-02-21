@@ -60,7 +60,7 @@ export class SearchMyRecipes extends React.Component{
       for(let i = 0; i < this.props.searchResults.length; i++){
         let recipeImg = "/defaultRecipeImage.png";
         if(this.props.searchResults[i].recipeImages !== 'undefined'){
-          recipeImg = `${API_BASE_URL}/images/${this.props.searchResults[i].recipeImages}`;
+          recipeImg = this.props.searchResults[i].recipeImages;
         };
         searchRecipe.push({
           original: recipeImg,

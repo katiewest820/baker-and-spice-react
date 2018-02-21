@@ -13,6 +13,7 @@ import EditRecipe from '../editRecipe/editRecipe';
 import SearchMyRecipes from '../searchMyRecipes/searchMyRecipes';
 import APIRecipeSearchResults from '../apiRecipeSearchResults/apiRecipeSearchResults';
 import Help from '../help/help';
+import LoadingPage from '../loadingPage/loadingPage';
 
 export default class App extends React.Component {
   render() {
@@ -27,6 +28,7 @@ export default class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/pantry" component={Pantry} />
           <Route exact path="/newRecipe" component={NewRecipe} />
+          <Route exact path="/loading" component={LoadingPage} />
           <Route exact path="/apiRecipeSearch" component={APIRecipeSearch} />
           <Route exact path="/deleteMsg/:recipeSlug" component={DeleteMsg} />
           <Route exact path="/editRecipe/:recipeSlug" component={EditRecipe} />

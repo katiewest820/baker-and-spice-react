@@ -6,7 +6,8 @@ import {GET_ONE_RECIPE,
         SUBMIT_NEW_RECIPE,
         ADD_INGREDIENT_TO_RECIPE, 
         NEW_RECIPE_INGREDIENT_LIST, 
-        EDIT_NEW_RECIPE_INGREDIENT_LIST} from '../actions/recipeActions';
+        EDIT_NEW_RECIPE_INGREDIENT_LIST,
+        PENDING_LOAD } from '../actions/recipeActions';
 
 const initialState = {
   allRecipes: [],
@@ -104,6 +105,18 @@ export default(state=initialState, action) => {
         newRecipeIngredientList: action.payload.slice(), 
         creatingRecipeIngredientList: action.payload.slice(),
         recipeSlug: ''
+      }
+    case PENDING_LOAD:
+      //changes recipe slug to pending while waiting for new/edited recipe details from server
+      return state = {
+        allRecipes: [],
+        finishedLoading: false,
+        oneRecipe: '',
+        searchResults: [],
+        deleted: false,
+        newRecipeIngredientList: [],
+        creatingRecipeIngredientList: [],
+        recipeSlug: 'pending'
       }
     default: 
       return state;

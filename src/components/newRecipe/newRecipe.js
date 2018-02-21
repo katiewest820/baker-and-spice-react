@@ -4,7 +4,7 @@ import IngredientInputs from '../ingredientInputs/ingredientInputs';
 import {Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';
 import {connect} from 'react-redux';
-import {editNewRecipeIngredientList, submitNewRecipe} from '../../actions/recipeActions';
+import {editNewRecipeIngredientList, submitNewRecipe, pendingLoad} from '../../actions/recipeActions';
 import store from '../../store';
 import {reduxForm, Field, reset} from 'redux-form';
 import {required, renderField, renderTextAreaField} from '../../validators';
@@ -26,6 +26,7 @@ export class NewRecipe extends React.Component{
   };
 
   saveRecipeToDB(values){
+    this.props.pendingLoad();
     let data = new FormData();
     let imagedata = document.querySelector('input[type="file"]').files[0];
     data.append('recipeTitle', values.recipeTitle);
@@ -73,9 +74,10 @@ export class NewRecipe extends React.Component{
               />
             </div> 
             <button className="submitNewRecipeButton" type="submit">Submit Recipe</button>
-            { this.props.recipeSlug && (
-              <Redirect to={"/recipeDetails/" + this.props.recipeSlug} />
-            )}
+            {this.props.recipeSlug === 'pending' && (
+              <Redirect to="/loading" /> ) }
+              
+              
           </form>
         </div>
       </div>
@@ -88,7 +90,7 @@ const mapStateToProps = state => ({
   recipeSlug: state.recipeReducers.recipeSlug
 });
 
-NewRecipe = connect(mapStateToProps, {editNewRecipeIngredientList, submitNewRecipe})(NewRecipe);
+NewRecipe = connect(mapStateToProps, {editNewRecipeIngredientList, submitNewRecipe, pendingLoad})(NewRecipe);
 
 export default reduxForm({
   form: 'newRecipe' 

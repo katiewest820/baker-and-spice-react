@@ -21,8 +21,8 @@ describe('<RecipeDetails />', () => {
       oneRecipe={oneRecipe} 
       match={params} 
       localStorage={window.localStorage}
-      getOneRecipe={() => {}}
-      getPantryItems={() => {}}
+      getOneRecipe={() => {return {error: true}}}
+      getPantryItems={() => {return {error: true}}}
     />);
   });
 });

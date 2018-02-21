@@ -39,7 +39,7 @@ export class MyRecipes extends React.Component{
       for(let i = 0; i < this.props.allRecipes.length; i++){
         let recipeImg = "/defaultRecipeImage.png";
         if(this.props.allRecipes[i].recipeImages !== 'undefined'){
-          recipeImg = `${API_BASE_URL}/images/${this.props.allRecipes[i].recipeImages}`;
+          recipeImg = this.props.allRecipes[i].recipeImages;
         };
         recipe.push({
           original: recipeImg,

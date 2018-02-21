@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../header/header';
 import {connect} from 'react-redux';
-import {getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe} from '../../actions/recipeActions';
+import {getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe, pendingLoad} from '../../actions/recipeActions';
 import {API_BASE_URL} from '../../config';
 import {reduxForm, Field, reset} from 'redux-form';
 import {Redirect} from 'react-router-dom';
@@ -25,6 +25,7 @@ export class EditRecipe extends React.Component{
   };
 
   sendUpdatedRecipeToDB(values){
+    this.props.pendingLoad();
     let recipeSlug = values.recipeTitle.trim().toLowerCase().split(' ').join('-');
     let id = values._id;
     let data = new FormData();
@@ -107,9 +108,8 @@ export class EditRecipe extends React.Component{
               />
             </div>
             <button className="submitNewRecipeButton" type="submit">Submit Changes</button> 
-            { this.props.recipeSlug && (
-                <Redirect to={"/recipeDetails/" + this.props.recipeSlug} />
-              )}
+            {this.props.recipeSlug === 'pending' && (
+              <Redirect to="/loading" /> ) }
           </form>
         </div>
       </div>
@@ -125,7 +125,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps,
-{getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe})(reduxForm({
+{getOneRecipe, editNewRecipeIngredientList, newRecipeIngredientList, editRecipe, pendingLoad})(reduxForm({
   form: 'editRecipe', 
   enableReinitialize: true 
 })(EditRecipe));
