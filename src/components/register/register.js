@@ -1,7 +1,6 @@
 import React from 'react';
 import LandingPageHeader from '../landingPageHeader/landingPageHeader';
 import {reduxForm, Field} from 'redux-form';
-import {connect} from 'react-redux';
 import {register, login} from '../../actions/authActions';
 import {Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';

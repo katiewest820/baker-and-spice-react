@@ -2,7 +2,6 @@ import React from 'react';
 import LandingPageHeader from '../landingPageHeader/landingPageHeader';
 import {reduxForm, Field, reset} from 'redux-form';
 import {Redirect} from 'react-router-dom';
-import {connect} from 'react-redux';
 import {login} from '../../actions/authActions';
 import {API_BASE_URL} from '../../config';
 import {required, renderField} from '../../validators';
