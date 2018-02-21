@@ -3,7 +3,7 @@
   padding-bottom: 30px;
   padding-top: 140px;
   position: relative;
-  height: -webkit-fill-available;
+  height: stretch;
 }
 
 .outOfStock{
