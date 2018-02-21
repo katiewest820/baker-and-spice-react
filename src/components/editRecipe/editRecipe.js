@@ -18,7 +18,6 @@ export class EditRecipe extends React.Component{
     Promise.all([
       this.props.getOneRecipe(`${API_BASE_URL}/recipe/getRecipe/${userId}/${recipeSlug}`)
       ]).then((response) => {
-        console.log(response)
         if(!response.error){
           this.props.newRecipeIngredientList(this.props.oneRecipe.recipeIngredients);
         };

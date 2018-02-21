@@ -13,7 +13,7 @@ export class LandingPage extends React.Component{
       userName: 'dummyAccount',
       password: 'password123'
     };
-    this.props.dispatch(login(`${API_BASE_URL}/auth/login`, values));
+    this.props.login(`${API_BASE_URL}/auth/login`, values);
   };
 
   render(){
@@ -56,8 +56,8 @@ export class LandingPage extends React.Component{
   };
 };
 
-// const mapStateToProps = state => ({
-//   loginRedirect: state.authReducers.loginRedirect
-// });mapStateToProps, {login}
+const mapStateToProps = state => ({
+  loginRedirect: state.authReducers.loginRedirect
+});
 
-export default connect()(LandingPage);
+export default connect(mapStateToProps, {login})(LandingPage);
