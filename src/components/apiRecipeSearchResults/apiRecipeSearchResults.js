@@ -21,19 +21,17 @@ export class APIRecipeSearchResults extends React.Component{
   };
 
   onImageClick(item){
-    console.log(item.description)
-    let myDescription = item.description.replace(/#8217;/g,"'")
-    console.log(myDescription)
+    let myDescription = item.description.replace(/&#8217;/g,"'")
     return (
       <div className='image-gallery-image'>
         <img
-          alt={item.description}
+          alt={myDescription}
           src={item.original}
         />
         {
           item.description && item.link && 
           <a className='image-gallery-description hoverStyle' href={item.link}>
-            {item.description}
+            {myDescription}
           </a>   
         }
       </div>
