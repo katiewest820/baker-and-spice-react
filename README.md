@@ -57,6 +57,7 @@ Users are also able to search by an ingredient type or recipe name if they need 
 * Jsonwebtoken
 * Slugs
 * Uuid
+* Cloudiary for image storage
 
 ### Testing:
 * Chai
