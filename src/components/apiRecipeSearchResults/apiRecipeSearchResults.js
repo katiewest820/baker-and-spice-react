@@ -21,6 +21,9 @@ export class APIRecipeSearchResults extends React.Component{
   };
 
   onImageClick(item){
+    console.log(item.description)
+    let myDescription = item.description.replace(/#8217;/g,"'")
+    console.log(myDescription)
     return (
       <div className='image-gallery-image'>
         <img
