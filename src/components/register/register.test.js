@@ -6,6 +6,6 @@ import store from '../../store';
 
 describe('<Register />', () => {
   it('Renders without crashing', () => {
-    shallow(<Register localStorage={window.localStorage} store={store}/>);
+    shallow(<Register localStorage={window.localStorage} store={store} handleSubmit={() => {}}/>);
   });
 });

@@ -20,7 +20,6 @@ export class APIRecipeSearchResults extends React.Component{
     this.props.apiRecipeSearch(`${API_BASE_URL}/apiRequest/search/${value}`);
   };
 
-
   onImageClick(item){
     return (
       <div className='image-gallery-image'>
@@ -64,11 +63,10 @@ export class APIRecipeSearchResults extends React.Component{
       )
     }else if(this.props.searchResults.length > 0){
       for(let i = 0; i < this.props.searchResults.length; i++){
-        let httpsURL = this.props.searchResults[i].image_url.replace('http', 'https')
-        console.log(httpsURL)
+        let httpsURL = this.props.searchResults[i].image_url.replace('http', 'https');
         images.push({
-          original: httpsURL,//this.props.searchResults[i].image_url,
-          thumbnail: httpsURL,//this.props.searchResults[i].image_url,
+          original: httpsURL,
+          thumbnail: httpsURL,
           description: this.props.searchResults[i].title,
           link: this.props.searchResults[i].source_url
         });

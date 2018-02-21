@@ -1,12 +1,12 @@
 import {LOGIN, login, LOGOUT, logout, REGISTER, register} from './authActions';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import {API_BASE_URL} from '../config';
+
 let mock = new MockAdapter(axios);
 
 describe('login', () => {
   it('Should return the action', () => {
-    const url = `${API_BASE_URL}/auth/login`;
+    const url = 'https://myfakeurl.com';
     const loginData = {userName: 'username', password: 'password'};
     const postRequest = mock.onPost(url).reply(200, loginData);
     const action = login(url, loginData);
@@ -20,7 +20,7 @@ describe('login', () => {
 
 describe('register', () => {
   it('Should return the action', () => {
-    const url = `${API_BASE_URL}/auth/register`;
+    const url = 'https://myfakeurl.com';
     const registerData = {userName: 'username', password: 'password', firstName: 'first', lastName: 'last'};
     const postRequest = mock.onPost(url).reply(200, registerData);
     const action = register(url, registerData);

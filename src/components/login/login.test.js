@@ -6,6 +6,6 @@ import '../../mock-localStorage';
 
 describe('<Login />', () => {
   it('Renders without crashing', () => {
-    shallow(<Login localStorage={window.localStorage} store={store}/>);
+    shallow(<Login localStorage={window.localStorage} store={store} handleSubmit={() => {}}/>);
   });
 });

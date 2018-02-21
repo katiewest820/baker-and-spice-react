@@ -15,11 +15,11 @@ export class Register extends React.Component{
       userName: values.userName,
       password: values.password
     };
-    this.props.register(`${API_BASE_URL}/auth/register`, values)
+    this.props.dispatch(register(`${API_BASE_URL}/auth/register`, values))
     .then((response) => {
       if(!response.error){
-        this.props.login(`${API_BASE_URL}/auth/login`, loginValues);
-      };
+        this.props.dispatch(login(`${API_BASE_URL}/auth/login`, loginValues));
+      }
     });
   };
 
@@ -64,11 +64,11 @@ export class Register extends React.Component{
   };
 };
 
-const mapStateToProps = state => ({
-  loginRedirect: state.authReducers.loginRedirect
-});
+// const mapStateToProps = state => ({
+//   loginRedirect: state.authReducers.loginRedirect
+// });
 
-Register = connect(mapStateToProps, {register, login})(Register);
+//Register = connect(mapStateToProps, {register, login})(Register);
 
 export default reduxForm({
   form: 'userRegister' 

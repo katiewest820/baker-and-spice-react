@@ -11,7 +11,7 @@ import './login.css';
 export class Login extends React.Component{
 
   grabLoginValuesAndMakeAPICall(values){
-    this.props.login(`${API_BASE_URL}/auth/login`, values);
+    this.props.dispatch(login(`${API_BASE_URL}/auth/login`, values));
     this.props.dispatch(reset('userLogin'));
   };
 
@@ -44,11 +44,11 @@ export class Login extends React.Component{
   };
 };
 
-const mapStateToProps = state => ({
-  loginRedirect: state.authReducers.loginRedirect
-});
+// const mapStateToProps = state => ({
+//   loginRedirect: state.authReducers.loginRedirect
+// });
 
-Login = connect(mapStateToProps, {login})(Login);
+// Login = connect(mapStateToProps, {login})(Login);
 
 export default reduxForm({
   form: 'userLogin' 
