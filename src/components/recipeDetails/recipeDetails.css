@@ -125,6 +125,12 @@
   overflow-wrap: break-word;
 }
 
+.nothingMissing{
+  font-size: 16px;
+  padding-right: 10px;
+  width: fit-content;
+}
+
 .recipeMissingIngredientsDiv select{
   height: 42px;
 }

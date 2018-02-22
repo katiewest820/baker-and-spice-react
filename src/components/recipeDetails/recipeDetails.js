@@ -101,7 +101,7 @@ export class RecipeDetails extends React.Component{
         )
       });
     }else{
-      missingIngredients = <p>Nothing! You are all set to begin baking.</p>
+      missingIngredients = <p className="nothingMissing">Nothing! You are all set to begin baking.</p>
     }
     return(
       <div>

@@ -93,6 +93,10 @@
   text-transform: capitalize;
 }
 
+.image-gallery-description:hover{
+  color: #28b8be !important;
+}
+
 .image-gallery-slide-wrapper {
   width: 95%;
   margin: auto;
