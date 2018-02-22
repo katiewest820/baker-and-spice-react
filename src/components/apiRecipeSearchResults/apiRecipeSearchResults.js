@@ -30,7 +30,7 @@ export class APIRecipeSearchResults extends React.Component{
         />
         {
           item.description && item.link && 
-          <a className='image-gallery-description hoverStyle' href={item.link}>
+          <a className='image-gallery-description hoverStyle' href={item.link} target="_blank">
             {myDescription}
           </a>   
         }
