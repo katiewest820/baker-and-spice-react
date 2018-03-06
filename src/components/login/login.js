@@ -34,7 +34,7 @@ export class Login extends React.Component{
             validate={required}
             name="password"
           />
-          <button type="submit">Submit</button>
+         <button type="submit">Submit</button>
           {localStorage.getItem('authToken') && (
             <Redirect to="/home"/>
           )}

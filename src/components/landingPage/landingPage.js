@@ -2,7 +2,7 @@ import React from 'react';
 import LandingPageHeader from '../landingPageHeader/landingPageHeader';
 import {connect} from 'react-redux';
 import {login} from '../../actions/authActions';
-import {Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {API_BASE_URL} from '../../config';
 import './landingPage.css';
 
@@ -46,10 +46,9 @@ export class LandingPage extends React.Component{
         <div className="registerDiv">
           <h1>Try it out Now!</h1>
           <p>Login with a Demo Account to see more</p>
-          <button onClick={this.demoLogin.bind(this)}>Demo Account Login</button>
-          {localStorage.getItem('authToken') && (
-            <Redirect to="/home"/>
-          )}
+          <Link to="/loginLoading" onClick={this.demoLogin.bind(this)}>
+            <button>Demo Account Login</button>
+          </Link>
         </div> 
       </section>
     )
